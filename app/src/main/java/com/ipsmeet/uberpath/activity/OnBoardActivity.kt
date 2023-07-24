@@ -1,5 +1,6 @@
 package com.ipsmeet.uberpath.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
@@ -37,11 +38,11 @@ class OnBoardActivity : AppCompatActivity() {
         timer.scheduleAtFixedRate(SliderTimer(), 4000, 4000)
 
         binding.btnGetStarted.setOnClickListener {
-            Toast.makeText(this, "Get Started", Toast.LENGTH_SHORT).show()
+            updateUI()
         }
 
         binding.txtSkip.setOnClickListener {
-            Toast.makeText(this, "Skip", Toast.LENGTH_SHORT).show()
+            updateUI()
         }
     }
 
@@ -74,6 +75,13 @@ class OnBoardActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    fun updateUI() {
+        startActivity(
+            Intent(this, SignInActivity::class.java)
+        )
+        finish()
     }
 
     inner class SliderTimer : TimerTask() {
