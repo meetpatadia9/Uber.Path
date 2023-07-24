@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <bitmap
+            android:src="@drawable/img_onboard_2"/>
+    </item>
+
+    <item
+        android:bottom="@dimen/_68sdp">
+        <shape>
+            <gradient
+                android:angle="90"
+                android:centerColor="#0CFFFFFF"
+                android:endColor="#00FFFFFF"
+                android:startColor="#FFFFFF" />
+        </shape>
+    </item>
+
+</layer-list>

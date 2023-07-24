@@ -10,4 +10,8 @@
 
     <color name="green">#1DAB87</color>
     <color name="blue">#1D3A70</color>
+    <color name="device_surround">#3A4245</color>
+    <color name="device_frame">#121515</color>
+    <color name="greyscale_200">#E5E7EB</color>
+    <color name="greyscale_500">#6B7280</color>
 </resources>

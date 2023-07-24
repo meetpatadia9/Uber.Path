@@ -1,7 +1,8 @@
-package com.ipsmeet.uberpath
+package com.ipsmeet.uberpath.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ipsmeet.uberpath.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

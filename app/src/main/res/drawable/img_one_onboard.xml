@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--  DEVICE BUTTONS  -->
+    <item
+        android:bottom="@dimen/_300sdp"
+        android:top="@dimen/_70sdp">
+        <bitmap
+            android:src="@drawable/img_device_button" />
+    </item>
+
+    <!--  SCREEN  -->
+    <item
+        android:bottom="@dimen/_12sdp"
+        android:end="@dimen/_12sdp"
+        android:start="@dimen/_12sdp"
+        android:top="@dimen/_12sdp">
+        <bitmap
+            android:src="@drawable/img_onboard_1" />
+    </item>
+
+    <!--  DEVICE DROP-PANEL  -->
+    <item
+        android:width="@dimen/_122sdp"
+        android:height="@dimen/_20sdp"
+        android:gravity="center_horizontal"
+        android:top="@dimen/_13sdp">
+        <shape>
+            <solid
+                android:color="@color/device_frame" />
+            <corners
+                android:bottomLeftRadius="@dimen/_15sdp"
+                android:bottomRightRadius="@dimen/_15sdp" />
+        </shape>
+    </item>
+
+    <!--  DEVICE SPEAKER  -->
+    <item
+        android:width="@dimen/_40sdp"
+        android:height="@dimen/_5sdp"
+        android:gravity="center_horizontal"
+        android:top="@dimen/_19sdp">
+        <bitmap
+            android:src="@drawable/img_device_speaker" />
+    </item>
+
+    <!--  DEVICE CAMERA  -->
+    <item
+        android:width="@dimen/_11sdp"
+        android:height="@dimen/_11sdp"
+        android:start="@dimen/_195sdp"
+        android:top="@dimen/_16sdp">
+        <bitmap
+            android:src="@drawable/img_device_camera" />
+    </item>
+
+    <!--  DEVICE OUTER-FRAME  -->
+    <item
+        android:bottom="@dimen/_3sdp"
+        android:end="@dimen/_3sdp"
+        android:start="@dimen/_3sdp"
+        android:top="@dimen/_3sdp">
+        <shape>
+            <stroke
+                android:width="@dimen/_2sdp"
+                android:color="@color/device_surround" />
+            <corners
+                android:radius="@dimen/_30sdp" />
+        </shape>
+    </item>
+
+    <!--  DEVICE FRAME  -->
+    <item
+        android:bottom="@dimen/_4sdp"
+        android:end="@dimen/_4sdp"
+        android:start="@dimen/_4sdp"
+        android:top="@dimen/_4sdp">
+        <shape>
+            <stroke
+                android:width="@dimen/_10sdp"
+                android:color="@color/device_frame" />
+            <corners
+                android:radius="@dimen/_25sdp" />
+        </shape>
+    </item>
+
+
+</layer-list>

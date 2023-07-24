@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/img"
+    android:drawable="@drawable/img_splash_screen"
     android:insetLeft="@dimen/_33sdp"
     android:insetRight="@dimen/_33sdp"
     android:insetTop="@dimen/_33sdp"

@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Uber.Path</string>
+
+    <string name="hi_there_wave">Hi There! 👋</string>
+    <string name="txt_skip">Skip</string>
+    <string name="txt_get_started">Get Started</string>
+    <string name="txt_first_title_onboard">Finance app the safest and most trusted</string>
+    <string name="txt_first_description_onboard">Your finance work starts here. Our here to help you track and deal with speeding up your transactions.</string>
+    <string name="txt_this_month">This month</string>
+    <string name="txt_today">Today</string>
+    <string name="txt_suggested_split">Suggested split</string>
+    <string name="txt_direct_deposit">Direct Deposit</string>
+    <string name="txt_second_title_onboard">The fastest transaction process only here</string>
+    <string name="txt_second_description_onboard">Get easy to pay all your bills with just a few steps. Paying your bills become fast and efficient.</string>
 </resources>
