@@ -26,8 +26,6 @@ class OnBoardActivity : AppCompatActivity() {
         binding = ActivityOnBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar!!.hide()
-
         onBoardAdapter = OnBoardAdapter(this)
 
         binding.viewpager.adapter = onBoardAdapter

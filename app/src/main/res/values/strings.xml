@@ -19,4 +19,23 @@
     <string name="txt_forgot_password">Forgot Password?</string>
     <string name="txt_sign_in">Sign In</string>
     <string name="txt_or">OR</string>
+    <string name="txt_no_account">Don\'t have an account? <b>Sign Up</b></string>
+    <string name="cd_apple_login">Apple Login</string>
+    <string name="cd_google_login">Google Login</string>
+    <string name="cd_password_recovery">Password Recovery</string>
+    <string name="txt_recovery_instruction">Enter your registered email below to receive password instructions.</string>
+    <string name="txt_send_me_email">Send me email</string>
+    <string name="txt_verify_your_identity">Verify your identity</string>
+    <string name="txt_verification_code_info">Where would you like <b>Co.payment</b> to send your security code?</string>
+    <string name="text_mail">abc@gmail.com</string>
+    <string name="txt_continue">Continue</string>
+    <string name="cd_identity">Identity</string>
+    <string name="cd_checked">checked</string>
+    <string name="txt_create_new_password">Create new password</string>
+    <string name="txt_new_password_instruction">Please, enter a new password below different from the previous password.</string>
+    <string name="txt_confirm_password">Confirm password</string>
+    <string name="txt_verify_yourself">Verify it’s you</string>
+    <string name="txt_verification_instruction">Login quickly and securely with the fingerprint stored on this device.</string>
+    <string name="txt_resend_code">Resend Code</string>
+    <string name="txt_confirm">Confirm</string>
 </resources>

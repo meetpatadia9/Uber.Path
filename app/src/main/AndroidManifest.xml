@@ -12,6 +12,24 @@
         android:theme="@style/Theme.UberPath"
         tools:targetApi="31">
         <activity
+            android:name=".activity.OTPActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CreateNewPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.VerifyIdentityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PasswordRecoveryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.SignInActivity"
             android:exported="false" />
         <activity
