@@ -1,13 +1,13 @@
 package com.ipsmeet.uberpath.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.adapter.OnBoardAdapter
@@ -18,7 +18,14 @@ class OnBoardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnBoardBinding
 
+    //  shared-preference
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor: Editor
+    private var isVisited = false
+
     private lateinit var timer: Timer
+
+    //  adapter
     private lateinit var onBoardAdapter: OnBoardAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,19 +33,26 @@ class OnBoardActivity : AppCompatActivity() {
         binding = ActivityOnBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        onBoardAdapter = OnBoardAdapter(this)
+        //  Initialize shared-preference
+        sharedPreferences = getSharedPreferences("sharedPreference", MODE_PRIVATE)
+        editor = sharedPreferences.edit()
 
+        //  Initialize adapter
+        onBoardAdapter = OnBoardAdapter(this)
         binding.viewpager.adapter = onBoardAdapter
 
         dotsIndicator()
 
+        //  Initialize timer
         timer = Timer()
-        timer.scheduleAtFixedRate(SliderTimer(), 4000, 4000)
+        timer.scheduleAtFixedRate(sliderTimer, 4000, 4000)
 
+        //   GET-STARTED BUTTON
         binding.btnGetStarted.setOnClickListener {
             updateUI()
         }
 
+        //   SKIP BUTTON
         binding.txtSkip.setOnClickListener {
             updateUI()
         }
@@ -47,8 +61,9 @@ class OnBoardActivity : AppCompatActivity() {
     private fun dotsIndicator() {
         val dots = arrayOfNulls<ImageView>(onBoardAdapter.itemCount)
 
-        // Highlight the first dot as active
-        dots[0]?.setImageResource(R.drawable.active_view_pager) // Create a active dot drawable
+        //  Create a active dot drawable
+        //  Highlight the first dot as active
+        dots[0]?.setImageResource(R.drawable.active_view_pager)
 
         for (i in 0 until onBoardAdapter.itemCount) {
             dots[i] = ImageView(this)
@@ -56,11 +71,12 @@ class OnBoardActivity : AppCompatActivity() {
             val width = 55
             val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams(width, height))
             dots[i]?.layoutParams = params
-            dots[i]?.setImageResource(R.drawable.inactive_view_pager) // Create an inactive dot drawable
+            //  Create an inactive dot drawable
+            dots[i]?.setImageResource(R.drawable.inactive_view_pager)
             binding.layoutDots.addView(dots[i])
         }
 
-        // Set up ViewPager page change listener to update dot indicators
+        // Set up ViewPager's page-change-listener to update dot indicators
         binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -75,14 +91,18 @@ class OnBoardActivity : AppCompatActivity() {
         })
     }
 
-    fun updateUI() {
+    //  EXIT FROM ON-BOARD-ACTIVITY
+    private fun updateUI() {
+        editor.putBoolean("isVisited", true)
+        editor.apply()
+
         startActivity(
             Intent(this, SignInActivity::class.java)
         )
         finish()
     }
 
-    inner class SliderTimer : TimerTask() {
+    private val sliderTimer = object : TimerTask() {
         override fun run() {
             runOnUiThread {
                 if (binding.viewpager.currentItem < onBoardAdapter.itemCount - 1) {
@@ -91,6 +111,14 @@ class OnBoardActivity : AppCompatActivity() {
                     binding.viewpager.currentItem = 0
                 }
             }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        isVisited = sharedPreferences.getBoolean("isVisited", false)
+        if (isVisited) {
+            updateUI()
         }
     }
 

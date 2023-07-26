@@ -35,7 +35,18 @@
     <string name="txt_new_password_instruction">Please, enter a new password below different from the previous password.</string>
     <string name="txt_confirm_password">Confirm password</string>
     <string name="txt_verify_yourself">Verify it’s you</string>
-    <string name="txt_verification_instruction">Login quickly and securely with the fingerprint stored on this device.</string>
+    <string name="txt_verification_instruction">We send a code to %1$s. Enter it here to verify your identity</string>
     <string name="txt_resend_code">Resend Code</string>
     <string name="txt_confirm">Confirm</string>
+    <string name="txt_biometric_instruction">Login quickly and securely with the fingerprint stored on this device</string>
+    <string name="txt_will_do_later">I’ll do this later</string>
+    <string name="cd_device">Device</string>
+    <string name="cd_shield">Shield</string>
+    <string name="cd_graph">Graph</string>
+    <string name="txt_payment">Payment</string>
+    <string name="cd_add">Add</string>
+    <string name="cd_logo_mastercard">Logo MasterCard</string>
+    <string name="fake_card_num">**** 2504</string>
+    <string name="txt_tommy">Tommy Wilfred Jason</string>
+    <string name="cd_tommy_image">Tommy Image</string>
 </resources>

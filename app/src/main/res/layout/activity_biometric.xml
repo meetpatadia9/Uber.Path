@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_15sdp"
-    tools:context=".activity.OTPActivity">
+    tools:context=".activity.BiometricActivity">
 
     <ImageView
         android:id="@+id/btn_back"
@@ -19,14 +19,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_verify_yourself"
+        android:id="@+id/txt_biometri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_25sdp"
-        android:text="@string/txt_verify_yourself"
+        android:text="Enable biometric Access"
         android:textColor="@color/blue"
         android:textSize="@dimen/_21ssp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_back" />
 
@@ -34,55 +35,48 @@
         android:id="@+id/txt_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:letterSpacing="0.02"
-        android:lineSpacingExtra="@dimen/_3sdp"
-        android:text="@string/txt_verification_instruction"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:text="@string/txt_biometric_instruction"
+        android:textAlignment="center"
         android:textColor="@color/greyscale_500"
         android:textSize="@dimen/_13ssp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_verify_yourself" />
+        app:layout_constraintEnd_toEndOf="@id/txt_biometri"
+        app:layout_constraintStart_toStartOf="@id/txt_biometri"
+        app:layout_constraintTop_toBottomOf="@id/txt_biometri" />
 
-    <com.gne.www.lib.PinView
-        android:id="@+id/otp_view"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_50sdp"
-        app:inputType="number"
-        app:isPassword="false"
-        app:passwordToggleSize="26dp"
-        app:pinBackground="@drawable/shape_edittext"
-        app:pinCount="5"
-        app:pinSize="@dimen/_45sdp"
-        app:textColor="@color/blue"
+    <ImageView
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:src="@drawable/img_biometric"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_description"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="@string/txt_resend_code"
-        android:textColor="@color/green"
-        android:textSize="@dimen/_13sdp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/otp_view" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginStart="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_45sdp"
         android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
         android:background="@drawable/shape_button"
         android:text="@string/txt_confirm"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toTopOf="@id/txt_will_do_later"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_will_do_later"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_will_do_later"
+        android:textColor="@color/green"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

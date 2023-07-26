@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_15sdp">
@@ -10,11 +9,13 @@
         android:id="@+id/onboard_image"
         android:layout_width="@dimen/_240sdp"
         android:layout_height="@dimen/_370sdp"
+        android:contentDescription="@string/cd_device"
         android:src="@drawable/img_one_onboard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42000002" />
 
     <TextView
         android:id="@+id/onboard_title"
@@ -41,6 +42,9 @@
         android:textAlignment="center"
         android:textColor="@color/greyscale_500"
         android:textSize="@dimen/_11ssp"
+        android:paddingTop="@dimen/_3sdp"
+        android:lineSpacingExtra="@dimen/_3sdp"
+        android:letterSpacing="0.02"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboard_image" />
@@ -55,7 +59,8 @@
         android:padding="@dimen/_5sdp"
         android:src="@drawable/img_shield"
         app:layout_constraintStart_toStartOf="@id/onboard_image"
-        app:layout_constraintTop_toTopOf="@id/onboard_image" />
+        app:layout_constraintTop_toTopOf="@id/onboard_image"
+        android:contentDescription="@string/cd_shield" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_one"
@@ -89,6 +94,8 @@
                 android:text="@string/txt_suggested_split"
                 android:textColor="@color/greyscale_500"
                 android:textSize="@dimen/_10ssp"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:letterSpacing="0.02"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_direct_deposit" />
 
@@ -141,7 +148,8 @@
                 android:src="@drawable/img_graph"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_this_month" />
+                app:layout_constraintTop_toBottomOf="@id/txt_this_month"
+                android:contentDescription="@string/cd_graph" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
