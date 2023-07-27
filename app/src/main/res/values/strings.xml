@@ -50,4 +50,14 @@
     <string name="txt_tommy">Tommy Wilfred Jason</string>
     <string name="cd_tommy_image">Tommy Image</string>
     <string name="txt_enable_biometric_access">Enable biometric access</string>
+    <string name="txt_full_name">Full name</string>
+    <string name="txt_create_account">Create a Co.payment account</string>
+    <string name="txt_sign_up">Sign Up</string>
+    <string name="txt_already_have_account">Already have an account? <b>Sign In</b></string>
+    <string name="txt_country_of_residence">Country of Residence</string>
+    <string name="txt_select_country_instruction">Please select all the countries that you’re a tax resident in</string>
+    <string name="cd_drop_icon">Drop icon</string>
+    <string name="txt_reason_title">Main reason for using Smartpay</string>
+    <string name="txt_reason_description">We need to know this for regulatory reasons. And also we’re curious!</string>
+    <string name="cd_reason_icon">Reason Icon</string>
 </resources>
