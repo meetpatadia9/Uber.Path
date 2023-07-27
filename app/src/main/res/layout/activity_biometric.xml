@@ -54,14 +54,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_confirm"
+        android:id="@+id/btn_enableBiometric"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_15sdp"
         android:background="@drawable/shape_button"
-        android:text="@string/txt_confirm"
+        android:text="@string/txt_enable_biometric_access"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_15ssp"

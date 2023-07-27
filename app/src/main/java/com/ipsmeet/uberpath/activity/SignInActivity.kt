@@ -1,6 +1,7 @@
 package com.ipsmeet.uberpath.activity
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -30,10 +31,15 @@ class SignInActivity : AppCompatActivity() {
                 ")+"
     )
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //  Initialize shared-preference
+        sharedPreferences = getSharedPreferences("sharedPreference", MODE_PRIVATE)
 
         //  BACK BUTTON
         binding.btnBack.setOnClickListener {
@@ -55,9 +61,9 @@ class SignInActivity : AppCompatActivity() {
             if (binding.edtxtEmail.text.toString().trim() == "") {
                 Toast.makeText(this, "Enter email.", Toast.LENGTH_SHORT).show()
             }
-            if (binding.edtxtPassword.text.toString().trim() == "") {
+            /*if (binding.edtxtPassword.text.toString().trim() == "") {
                 Toast.makeText(this, "Enter password.", Toast.LENGTH_SHORT).show()
-            }
+            }*/
             if (!isValidString(binding.edtxtEmail.text.toString())) {
                 Toast.makeText(this, "Invalid email. Enter proper email format!", Toast.LENGTH_SHORT).show()
             }
@@ -69,7 +75,7 @@ class SignInActivity : AppCompatActivity() {
                     Intent(this, OTPActivity::class.java)
                         .putExtra("email", binding.edtxtEmail.text.toString().trim())
                 )
-                finish()
+                /*finish()*/
             }
         }
 
@@ -119,6 +125,13 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateUI() {
+        startActivity(
+            Intent(this, HomeActivity::class.java)
+        )
+        finish()
+    }
+
     //  TEXT-WATCHER
     private val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
@@ -137,6 +150,14 @@ class SignInActivity : AppCompatActivity() {
     //  CHECKING ENTERED EMAIL VALIDITY
     private fun isValidString(str: String): Boolean {
         return EMAIL_ADDRESS_PATTERN.matcher(str).matches()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val isLogged = sharedPreferences.getBoolean("isLogged", false)
+        if (isLogged) {
+            updateUI()
+        }
     }
 
 }

@@ -1,15 +1,18 @@
 package com.ipsmeet.uberpath.activity
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivityVerifyIdentityBinding
+import java.util.regex.Pattern
 
 class VerifyIdentityActivity : AppCompatActivity() {
 
@@ -30,6 +33,8 @@ class VerifyIdentityActivity : AppCompatActivity() {
 
         binding.txtDescription.text = spannableString
 
+        binding.userEmail.text = intent.getStringExtra("email")
+
         isSelected()
 
         binding.btnContinue.setOnClickListener {
@@ -38,6 +43,9 @@ class VerifyIdentityActivity : AppCompatActivity() {
                     Intent(this, CreateNewPasswordActivity::class.java)
                 )
                 finish()
+            }
+            else {
+                Toast.makeText(this, "Select", Toast.LENGTH_SHORT).show()
             }
         }
     }
