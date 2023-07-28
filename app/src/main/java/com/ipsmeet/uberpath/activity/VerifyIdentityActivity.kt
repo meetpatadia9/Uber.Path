@@ -1,7 +1,6 @@
 package com.ipsmeet.uberpath.activity
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -12,12 +11,11 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivityVerifyIdentityBinding
-import java.util.regex.Pattern
 
 class VerifyIdentityActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityVerifyIdentityBinding
-    var isChecked = false
+    private var isChecked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +25,9 @@ class VerifyIdentityActivity : AppCompatActivity() {
         val spannableString = SpannableString(getText(R.string.txt_verification_code_info))
 
         spannableString.setSpan(
-                ForegroundColorSpan(ContextCompat.getColor(this@VerifyIdentityActivity, R.color.green)),
-                21, 31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
+            ForegroundColorSpan(ContextCompat.getColor(this@VerifyIdentityActivity, R.color.green)),
+            21, 31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
         binding.txtDescription.text = spannableString
 
@@ -43,8 +41,7 @@ class VerifyIdentityActivity : AppCompatActivity() {
                     Intent(this, CreateNewPasswordActivity::class.java)
                 )
                 finish()
-            }
-            else {
+            } else {
                 Toast.makeText(this, "Select", Toast.LENGTH_SHORT).show()
             }
         }

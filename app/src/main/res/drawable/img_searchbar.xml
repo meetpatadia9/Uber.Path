@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:height="@dimen/_20sdp"
+        android:width="@dimen/_20sdp">
+        <bitmap
+            android:src="@drawable/img_search"/>
+    </item>
+</layer-list>

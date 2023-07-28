@@ -60,4 +60,7 @@
     <string name="txt_reason_title">Main reason for using Smartpay</string>
     <string name="txt_reason_description">We need to know this for regulatory reasons. And also we’re curious!</string>
     <string name="cd_reason_icon">Reason Icon</string>
+    <string name="txt_cancel">Cancel</string>
+    <string name="cd_country_flag">Country Flag</string>
+    <string name="cd_ischecked">isChecked</string>
 </resources>

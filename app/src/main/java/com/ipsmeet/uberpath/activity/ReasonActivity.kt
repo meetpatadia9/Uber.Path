@@ -1,5 +1,6 @@
 package com.ipsmeet.uberpath.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -35,5 +36,11 @@ class ReasonActivity : AppCompatActivity() {
             adapter = ReasonAdapter(this@ReasonActivity, reasons)
         }
 
+        binding.btnContinue.setOnClickListener {
+            startActivity(
+                Intent(this, SetPINActivity::class.java)
+            )
+        }
     }
+
 }
