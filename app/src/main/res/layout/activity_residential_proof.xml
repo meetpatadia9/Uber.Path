@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_15sdp"
+    tools:context=".activity.ResidentialProofActivity">
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@drawable/shape_grey_button"
+        android:contentDescription="@string/cd_back_button"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/img_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:text="@string/txt_proof_of_residency"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_21ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back" />
+
+    <TextView
+        android:id="@+id/txt_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="@dimen/_3sdp"
+        android:text="@string/txt_prove_residency"
+        android:textColor="@color/greyscale_500"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_country" />
+
+    <TextView
+        android:id="@+id/txt_nationality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="@dimen/_3sdp"
+        android:text="Nationality"
+        android:textColor="@color/greyscale_500"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_description" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/select_country"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/shape_edittext"
+        android:padding="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@id/txt_nationality"
+        tools:layout_editor_absoluteX="19dp">
+
+        <ImageView
+            android:id="@+id/imgV_flag"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/flag_uk"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_countryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:text="Unite Kingdom"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imgV_flag"
+            app:layout_constraintStart_toEndOf="@id/imgV_flag"
+            app:layout_constraintTop_toTopOf="@id/imgV_flag" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_drop_icon"
+            android:text="Change"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/txt_verificationMethods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="@dimen/_3sdp"
+        android:text="Method of verification"
+        android:textColor="@color/greyscale_500"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/select_country" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_verificationMethods"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background=""
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        app:layout_constraintBottom_toTopOf="@id/btn_continue"
+        app:layout_constraintTop_toBottomOf="@id/txt_verificationMethods" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_45sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:background="@drawable/shape_button"
+        android:text="@string/txt_continue"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

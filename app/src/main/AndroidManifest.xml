@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UberPath"
         tools:targetApi="31">
+        <activity
+            android:name=".CardStyleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ResidentialProofActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.CameraActivity"
             android:exported="false" />

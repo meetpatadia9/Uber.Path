@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:width="@dimen/_250sdp"
+        android:height="@dimen/_250sdp"
+        android:gravity="bottom||center_horizontal"
+        android:start="@dimen/_45sdp"
+        android:top="@dimen/_55sdp">
+        <shape android:shape="oval">
+            <solid android:color="@color/greyscale_100" />
+        </shape>
+    </item>
+
+    <item
+        android:width="@dimen/_200sdp"
+        android:height="@dimen/_200sdp">
+        <bitmap android:src="@drawable/img_card_one" />
+    </item>
+
+    <item
+        android:width="@dimen/_200sdp"
+        android:height="@dimen/_200sdp"
+        android:start="@dimen/_90sdp"
+        android:top="@dimen/_100sdp">
+        <bitmap android:src="@drawable/img_card_two" />
+    </item>
+
+</layer-list>

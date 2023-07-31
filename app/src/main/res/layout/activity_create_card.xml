@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_15sdp"
+    tools:context=".activity.CreateCardActivity">
+
+    <ImageView
+        android:id="@+id/imgV_create_card_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_create_card_screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/cd_credit_cards" />
+
+    <TextView
+        android:id="@+id/txt_verify_yourself"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_create_your_smartpay_card"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_24ssp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgV_create_card_screen" />
+
+    <TextView
+        android:id="@+id/txt_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_9sdp"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="@dimen/_3sdp"
+        android:text="@string/txt_card_description"
+        android:textColor="@color/greyscale_500"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_verify_yourself" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_getCard"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_45sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:background="@drawable/shape_button"
+        android:text="@string/txt_get_free_card"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

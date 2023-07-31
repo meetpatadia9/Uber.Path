@@ -63,4 +63,14 @@
     <string name="txt_cancel">Cancel</string>
     <string name="cd_country_flag">Country Flag</string>
     <string name="cd_ischecked">isChecked</string>
+    <string name="cd_capture">Capture</string>
+    <string name="txt_proof_of_residency">Proof of residency</string>
+    <string name="txt_prove_residency">Prove you live in %1$s.</string>
+    <string name="cd_method_image">Method Image</string>
+    <string name="cd_next">Next</string>
+    <string name="cd_credit_cards">Credit cards</string>
+    <string name="txt_get_free_card">Get Free Card</string>
+    <string name="txt_card_description">The customizable, no hidden fee, instant discount debit or credit card</string>
+    <string name="txt_create_your_smartpay_card">Create your \nSmartpay Card</string>
+    <string name="txt_choose_your_style">Choose your style</string>
 </resources>
