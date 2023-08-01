@@ -4,7 +4,6 @@
     <item
         android:width="@dimen/_250sdp"
         android:height="@dimen/_250sdp"
-        android:gravity="bottom||center_horizontal"
         android:start="@dimen/_45sdp"
         android:top="@dimen/_55sdp">
         <shape android:shape="oval">

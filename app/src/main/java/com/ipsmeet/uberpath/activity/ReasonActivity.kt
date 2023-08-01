@@ -24,12 +24,14 @@ class ReasonActivity : AppCompatActivity() {
             finish()
         }
 
-        reasons.add(ReasonDataclass(R.drawable.img_spend_or_save, "Spend or \nsave daily"))
-        reasons.add(ReasonDataclass(R.drawable.img_fast, "Fast my\ntransactions"))
-        reasons.add(ReasonDataclass(R.drawable.img_friend, "Payments\nto friends"))
-        reasons.add(ReasonDataclass(R.drawable.img_credit_card, "Online\npayments"))
-        reasons.add(ReasonDataclass(R.drawable.img_travel, "Spend while\ntravelling"))
-        reasons.add(ReasonDataclass(R.drawable.img_business_plan, "Your financial\nassets"))
+        reasons.apply {
+            add(ReasonDataclass(R.drawable.img_spend_or_save, "Spend or \nsave daily"))
+            add(ReasonDataclass(R.drawable.img_fast, "Fast my\ntransactions"))
+            add(ReasonDataclass(R.drawable.img_friend, "Payments\nto friends"))
+            add(ReasonDataclass(R.drawable.img_credit_card, "Online\npayments"))
+            add(ReasonDataclass(R.drawable.img_travel, "Spend while\ntravelling"))
+            add(ReasonDataclass(R.drawable.img_business_plan, "Your financial\nassets"))
+        }
 
         binding.recyclerViewReasons.apply {
             layoutManager = GridLayoutManager(this@ReasonActivity, 2, LinearLayoutManager.VERTICAL, false)

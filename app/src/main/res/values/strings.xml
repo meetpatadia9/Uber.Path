@@ -73,4 +73,5 @@
     <string name="txt_card_description">The customizable, no hidden fee, instant discount debit or credit card</string>
     <string name="txt_create_your_smartpay_card">Create your \nSmartpay Card</string>
     <string name="txt_choose_your_style">Choose your style</string>
+    <string name="txt_new_card">New card</string>
 </resources>

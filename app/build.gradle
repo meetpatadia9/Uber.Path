@@ -53,6 +53,7 @@ dependencies {
     //  OTP view editText
     implementation 'com.github.darshan-miskin:PinView-Android:v1.1.8'
 
+    //  Camera view
     api("com.otaliastudios:cameraview:2.7.2")
 
     //  Handling all screen sizes
