@@ -29,7 +29,7 @@ class CameraActivity : AppCompatActivity() {
 
         //  VERIFY-IDENTITY [OPEN CAMERA] BUTTON
         binding.btnVerifyIdentity.setOnClickListener {
-            cameraPreview.openCamPreview(this, binding, binding.camPreview)
+            cameraPreview.openCamPreview(this, applicationContext, binding, binding.camPreview)
         }
     }
 

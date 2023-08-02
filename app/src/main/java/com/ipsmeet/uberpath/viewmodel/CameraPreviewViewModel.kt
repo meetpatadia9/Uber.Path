@@ -2,6 +2,7 @@ package com.ipsmeet.uberpath.viewmodel
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -34,10 +35,20 @@ class CameraPreviewViewModel: ViewModel() {
     @SuppressLint("StaticFieldLeak")
     private lateinit var cameraView: CameraView
 
-    fun openCamPreview(context: Context, binding: ActivityCameraBinding, camPreview: LayoutCameraBinding) {
+    private fun checkCameraPermission(activity: Activity) {
+        if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                activity,
+                arrayOf("android.permission.CAMERA"),
+                1)
+            return
+        }
+    }
+
+    fun openCamPreview(activity: Activity, context: Context, binding: ActivityCameraBinding, camPreview: LayoutCameraBinding) {
         camPreview.camView.visibility = View.VISIBLE
         binding.layoutActivityCamera.visibility = View.GONE
-        cameraPreviewLayout(context, binding, camPreview)
+        cameraPreviewLayout(activity, context, binding, camPreview)
     }
 
     fun closeCamPreview(binding: ActivityCameraBinding) {
@@ -45,7 +56,7 @@ class CameraPreviewViewModel: ViewModel() {
         binding.layoutActivityCamera.visibility = View.VISIBLE
     }
 
-    private fun cameraPreviewLayout(context: Context, binding: ActivityCameraBinding, camView: LayoutCameraBinding) {
+    private fun cameraPreviewLayout(activity: Activity, context: Context, binding: ActivityCameraBinding, camView: LayoutCameraBinding) {
 
         //  BACK BUTTON
         camView.btnBack.setOnClickListener {
@@ -57,7 +68,7 @@ class CameraPreviewViewModel: ViewModel() {
         cameraView = CameraView(context)
         surfaceHolder.addCallback(object : SurfaceHolder.Callback {
             override fun surfaceCreated(holder: SurfaceHolder) {
-                previewCamera(context)
+                previewCamera(context, activity)
             }
 
             override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) { }
@@ -73,7 +84,7 @@ class CameraPreviewViewModel: ViewModel() {
         }
     }
 
-    private fun previewCamera(context: Context) {
+    private fun previewCamera(context: Context, activity: Activity) {
         val cameraManager = context.getSystemService(AppCompatActivity.CAMERA_SERVICE) as CameraManager
 
         try {
@@ -87,9 +98,7 @@ class CameraPreviewViewModel: ViewModel() {
                         throw RuntimeException("Time out waiting to lock camera opening.")
                     }
 
-                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        return
-                    }
+                    checkCameraPermission(activity)
 
                     cameraManager.openCamera(cameraId, object : CameraDevice.StateCallback() {
                         override fun onOpened(camera: CameraDevice) {
