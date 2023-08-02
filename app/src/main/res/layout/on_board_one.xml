@@ -37,13 +37,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="@dimen/_3sdp"
+        android:paddingTop="@dimen/_3sdp"
         android:text="@string/txt_first_description_onboard"
         android:textAlignment="center"
         android:textColor="@color/greyscale_500"
         android:textSize="@dimen/_11ssp"
-        android:paddingTop="@dimen/_3sdp"
-        android:lineSpacingExtra="@dimen/_3sdp"
-        android:letterSpacing="0.02"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboard_image" />
@@ -54,12 +54,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="48dp"
         android:background="@drawable/shape_circle"
+        android:contentDescription="@string/cd_shield"
         android:elevation="@dimen/_5sdp"
         android:padding="@dimen/_5sdp"
         android:src="@drawable/img_shield"
         app:layout_constraintStart_toStartOf="@id/onboard_image"
-        app:layout_constraintTop_toTopOf="@id/onboard_image"
-        android:contentDescription="@string/cd_shield" />
+        app:layout_constraintTop_toTopOf="@id/onboard_image" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_one"
@@ -90,11 +90,11 @@
                 android:id="@+id/txt_suggested_split"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:letterSpacing="0.02"
+                android:lineSpacingExtra="@dimen/_3sdp"
                 android:text="@string/txt_suggested_split"
                 android:textColor="@color/greyscale_500"
                 android:textSize="@dimen/_10ssp"
-                android:lineSpacingExtra="@dimen/_3sdp"
-                android:letterSpacing="0.02"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_direct_deposit" />
 
@@ -144,11 +144,11 @@
                 android:layout_width="@dimen/_150sdp"
                 android:layout_height="@dimen/_65sdp"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:contentDescription="@string/cd_graph"
                 android:src="@drawable/img_graph"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_this_month"
-                android:contentDescription="@string/cd_graph" />
+                app:layout_constraintTop_toBottomOf="@id/txt_this_month" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

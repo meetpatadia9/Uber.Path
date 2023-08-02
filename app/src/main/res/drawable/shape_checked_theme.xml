@@ -2,10 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:height="@dimen/_20sdp"
         android:width="@dimen/_20sdp"
+        android:height="@dimen/_20sdp"
         android:gravity="center">
-        <shape android:shape="oval">
+        <shape
+            android:shape="oval">
             <stroke
                 android:width="@dimen/_2sdp"
                 android:color="@color/white" />
@@ -13,11 +14,12 @@
     </item>
 
     <item
-        android:top="@dimen/_10sdp"
         android:bottom="@dimen/_10sdp"
+        android:end="@dimen/_10sdp"
         android:start="@dimen/_10sdp"
-        android:end="@dimen/_10sdp">
-        <bitmap android:src="@drawable/img_checked_white"/>
+        android:top="@dimen/_10sdp">
+        <bitmap
+            android:src="@drawable/img_checked_white" />
     </item>
 
 </layer-list>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/_15sdp">
@@ -10,36 +11,36 @@
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:background="@drawable/shape_grey_circle"
+        android:contentDescription="@string/cd_method_image"
         android:padding="@dimen/_10sdp"
-        android:src="@drawable/img_passport"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/cd_method_image" />
+        tools:src="@drawable/img_passport" />
 
     <TextView
         android:id="@+id/txt_method"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
-        android:text="Passport"
         android:textColor="@color/blue"
         android:textSize="@dimen/_15ssp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/imgV_method"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.5"
+        tools:text="Passport" />
 
     <ImageView
         android:id="@+id/imgV_rightArrow"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
+        android:contentDescription="@string/cd_next"
         android:padding="@dimen/_10sdp"
         android:src="@drawable/img_arrow_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/cd_next" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

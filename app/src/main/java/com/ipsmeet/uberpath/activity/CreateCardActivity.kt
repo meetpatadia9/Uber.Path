@@ -14,6 +14,7 @@ class CreateCardActivity : AppCompatActivity() {
         binding = ActivityCreateCardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //  GET-CARD BUTTON
         binding.btnGetCard.setOnClickListener {
             startActivity(
                 Intent(this, CardStyleActivity::class.java)

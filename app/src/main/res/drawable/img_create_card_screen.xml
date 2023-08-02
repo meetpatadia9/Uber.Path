@@ -6,15 +6,18 @@
         android:height="@dimen/_250sdp"
         android:start="@dimen/_45sdp"
         android:top="@dimen/_55sdp">
-        <shape android:shape="oval">
-            <solid android:color="@color/greyscale_100" />
+        <shape
+            android:shape="oval">
+            <solid
+                android:color="@color/greyscale_100" />
         </shape>
     </item>
 
     <item
         android:width="@dimen/_200sdp"
         android:height="@dimen/_200sdp">
-        <bitmap android:src="@drawable/img_card_one" />
+        <bitmap
+            android:src="@drawable/img_card_one" />
     </item>
 
     <item
@@ -22,7 +25,8 @@
         android:height="@dimen/_200sdp"
         android:start="@dimen/_90sdp"
         android:top="@dimen/_100sdp">
-        <bitmap android:src="@drawable/img_card_two" />
+        <bitmap
+            android:src="@drawable/img_card_two" />
     </item>
 
 </layer-list>

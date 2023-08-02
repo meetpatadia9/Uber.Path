@@ -31,10 +31,12 @@ class CameraActivity : AppCompatActivity() {
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
 
+        //  VERIFY-IDENTITY BUTTON
         binding.btnVerifyIdentity.setOnClickListener {
             openCamPreview()
         }
@@ -54,6 +56,7 @@ class CameraActivity : AppCompatActivity() {
     private fun cameraPreviewLayout() {
         val camView = binding.camPreview
 
+        //  BACK BUTTON
         camView.btnBack.setOnClickListener {
             closeCamPreview()
         }
@@ -71,6 +74,7 @@ class CameraActivity : AppCompatActivity() {
             override fun surfaceDestroyed(holder: SurfaceHolder) { }
         })
 
+        //  CAPTURE BUTTON
         camView.btnCapture.setOnClickListener {
             startActivity(
                 Intent(this, ResidentialProofActivity::class.java)
@@ -119,7 +123,8 @@ class CameraActivity : AppCompatActivity() {
                     return
                 }
             }
-        } catch (e: CameraAccessException) {
+        }
+        catch (e: CameraAccessException) {
             Log.e("CameraActivity", "Failed to open front camera: ${e.message}")
         }
     }
@@ -174,8 +179,7 @@ class CameraActivity : AppCompatActivity() {
         val map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
         val supportedSizes = map?.getOutputSizes(SurfaceHolder::class.java) ?: emptyArray()
 
-        // You can modify the logic to select the desired preview size based on your requirements.
-        // Here, we are just choosing the first supported size, but you may want to consider other factors.
+        //  we are just choosing the first supported size
         return supportedSizes[0]
     }
 
@@ -183,7 +187,6 @@ class CameraActivity : AppCompatActivity() {
         super.onResume()
         closeCamPreview()
     }
-
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {

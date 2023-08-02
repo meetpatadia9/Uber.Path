@@ -13,10 +13,10 @@
         android:layout_width="@dimen/_27sdp"
         android:layout_height="@dimen/_27sdp"
         android:contentDescription="@string/cd_reason_icon"
-        android:src="@drawable/img_fast"
         android:tint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/img_fast" />
 
     <TextView
         android:id="@+id/txt_reasonTxt"

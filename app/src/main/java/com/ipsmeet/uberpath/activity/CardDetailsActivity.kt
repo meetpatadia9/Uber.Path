@@ -1,18 +1,17 @@
 package com.ipsmeet.uberpath.activity
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivityCardDetailsBinding
 import com.ipsmeet.uberpath.databinding.DialogCardIsReadyBinding
-
 
 class CardDetailsActivity : AppCompatActivity() {
 
@@ -35,14 +34,15 @@ class CardDetailsActivity : AppCompatActivity() {
             }
         }
 
+        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
 
+        //  SAVE BUTTON
         binding.btnSave.setOnClickListener {
             readyDialog()
         }
-
     }
 
     private fun readyDialog() {
@@ -59,9 +59,8 @@ class CardDetailsActivity : AppCompatActivity() {
 
         dialogBinding.imgVImg.elevation = 5F
 
-        //Corner radius
+        //  Corner radius
         val radius = resources.getDimension(com.intuit.sdp.R.dimen._15sdp)
-        /*val bottomAppBar = findViewById<BottomAppBar>(R.id.bottom_app_bar)*/
 
         val bottomBarBackground = dialogBinding.bottomAppBar.background as MaterialShapeDrawable
         bottomBarBackground.shapeAppearanceModel = bottomBarBackground.shapeAppearanceModel
@@ -72,8 +71,14 @@ class CardDetailsActivity : AppCompatActivity() {
             .setBottomRightCorner(CornerFamily.ROUNDED, radius)
             .build()
 
+        //  BUTTON
         dialogBinding.btnImReady.setOnClickListener {
             dialog.dismiss()
+
+            startActivity(
+                Intent(this, HomeActivity::class.java)
+            )
+            finish()
         }
     }
 

@@ -1,5 +1,6 @@
 package com.ipsmeet.uberpath.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,7 @@ class CountryAdapter(val context: Context, private val countryList: List<Country
         return countryList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         holder.apply {
             with(countryList[position]) {

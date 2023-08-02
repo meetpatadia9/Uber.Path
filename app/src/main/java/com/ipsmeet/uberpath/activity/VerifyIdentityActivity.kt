@@ -23,12 +23,10 @@ class VerifyIdentityActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val spannableString = SpannableString(getText(R.string.txt_verification_code_info))
-
         spannableString.setSpan(
             ForegroundColorSpan(ContextCompat.getColor(this@VerifyIdentityActivity, R.color.green)),
             21, 31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-
         binding.txtDescription.text = spannableString
 
         binding.userEmail.text = intent.getStringExtra("email")
@@ -61,4 +59,5 @@ class VerifyIdentityActivity : AppCompatActivity() {
             }
         }
     }
+
 }

@@ -17,6 +17,7 @@ class ResidentialProofActivity : AppCompatActivity() {
         binding = ActivityResidentialProofBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }

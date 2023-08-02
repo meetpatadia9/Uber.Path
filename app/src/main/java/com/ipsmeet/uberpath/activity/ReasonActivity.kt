@@ -13,17 +13,18 @@ import com.ipsmeet.uberpath.dataclass.ReasonDataclass
 class ReasonActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityReasonBinding
-    private val reasons = arrayListOf<ReasonDataclass>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReasonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
 
+        val reasons = arrayListOf<ReasonDataclass>()
         reasons.apply {
             add(ReasonDataclass(R.drawable.img_spend_or_save, "Spend or \nsave daily"))
             add(ReasonDataclass(R.drawable.img_fast, "Fast my\ntransactions"))
@@ -38,6 +39,7 @@ class ReasonActivity : AppCompatActivity() {
             adapter = ReasonAdapter(this@ReasonActivity, reasons)
         }
 
+        //  CONTINUE BUTTON
         binding.btnContinue.setOnClickListener {
             startActivity(
                 Intent(this, SetPINActivity::class.java)

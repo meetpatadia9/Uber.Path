@@ -24,14 +24,17 @@ class CountryActivity : AppCompatActivity() {
         binding = ActivityCountryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
 
+        //  SELECT-COUNTRY BOTTOM-SHEET
         binding.selectCountry.setOnClickListener {
             showBottomSheet()
         }
 
+        //  CONTINUE BUTTON
         binding.btnContinue.setOnClickListener {
             startActivity(
                 Intent(this, ReasonActivity::class.java)
@@ -45,6 +48,7 @@ class CountryActivity : AppCompatActivity() {
         bottomSheet.setContentView(bottomSheetBinding.root)
         bottomSheet.show()
 
+        //  CANCEL BUTTON
         bottomSheetBinding.btnCancel.setOnClickListener {
             bottomSheet.dismiss()
         }
@@ -71,4 +75,5 @@ class CountryActivity : AppCompatActivity() {
             })
         }
     }
+
 }

@@ -24,6 +24,11 @@ class OTPActivity : AppCompatActivity() {
         binding = ActivityOtpactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //  BACK BUTTON
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
+
         //  Initialize shared-preference
         sharedPreferences = getSharedPreferences("sharedPreference", MODE_PRIVATE)
         editor = sharedPreferences.edit()
@@ -45,6 +50,7 @@ class OTPActivity : AppCompatActivity() {
         }
         binding.txtDescription.text = spannableString
 
+        //  CONFIRM BUTTON
         binding.btnConfirm.setOnClickListener {
             updateUI()
         }

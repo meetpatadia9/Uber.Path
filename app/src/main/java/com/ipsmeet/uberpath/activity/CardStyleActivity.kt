@@ -14,10 +14,12 @@ class CardStyleActivity : AppCompatActivity() {
         binding = ActivityCardStyleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
 
+        //  CARD 1
         binding.imgVCardStyle1.setOnClickListener {
             startActivity(
                 Intent(this, CardDetailsActivity::class.java)
@@ -25,6 +27,7 @@ class CardStyleActivity : AppCompatActivity() {
             )
         }
 
+        //  CARD 2
         binding.imgVCardStyle2.setOnClickListener {
             startActivity(
                 Intent(this, CardDetailsActivity::class.java)
@@ -32,6 +35,7 @@ class CardStyleActivity : AppCompatActivity() {
             )
         }
 
+        //  CARD 3
         binding.imgVCardStyle3.setOnClickListener {
             startActivity(
                 Intent(this, CardDetailsActivity::class.java)

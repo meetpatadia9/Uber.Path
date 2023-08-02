@@ -11,21 +11,21 @@
         android:id="@+id/imgV_create_card_screen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/cd_credit_cards"
         android:src="@drawable/img_create_card_screen"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/cd_credit_cards" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_verify_yourself"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
         android:text="@string/txt_create_your_smartpay_card"
         android:textColor="@color/blue"
         android:textSize="@dimen/_24ssp"
         android:textStyle="bold"
-        android:layout_marginTop="@dimen/_15sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgV_create_card_screen" />
 

@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_25sdp"
-        android:text="Enable biometric Access"
+        android:text="@string/txt_enable_biometric_access"
         android:textColor="@color/blue"
         android:textSize="@dimen/_21ssp"
         android:textStyle="bold"
@@ -47,6 +47,7 @@
     <ImageView
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_100sdp"
+        android:contentDescription="@string/cd_finger_print"
         android:src="@drawable/img_biometric"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

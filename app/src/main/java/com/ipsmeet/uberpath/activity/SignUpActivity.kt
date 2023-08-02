@@ -4,7 +4,11 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.text.*
+import android.text.Editable
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
@@ -34,47 +38,45 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
 
-        //  String1
+        //  STRING-1
         val spannableString1 = SpannableString(getText(R.string.txt_create_account))
-
-        //  Apply color
+        //  apply color
         spannableString1.setSpan(
             ForegroundColorSpan(ContextCompat.getColor(this@SignUpActivity, R.color.green)),
             9, 19, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-
-        //  Apply design to text-view
+        //  apply design to text-view
         binding.txtCreateAccount.text = spannableString1
 
         binding.edtxtFullName.addTextChangedListener(textWatcher)
         binding.edtxtEmail.addTextChangedListener(textWatcher)
 
+        //  SIGN-UP BUTTON
         binding.btnSignUp.setOnClickListener {
             startActivity(
                 Intent(this, CountryActivity::class.java)
             )
         }
 
-        //  String2
+        //  STRING-2
         val spannableString2 = SpannableString(getText(R.string.txt_already_have_account))
-        //  Create clickable part of string
+        //  create clickable part of string
         val clickablePart = object : ClickableSpan() {
             //  when user click on that particular part
             override fun onClick(widget: View) {
                 finish()
             }
-
             //  To remove underline of Linked/Clickable part
             override fun updateDrawState(ds: TextPaint) {
                 ds.isUnderlineText = false
             }
         }
-
-        //  Apply all the properties to string
+        //  apply all the properties to string
         spannableString2.apply {
             //  enable clickable part
             setSpan(clickablePart, 25, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -84,8 +86,7 @@ class SignUpActivity : AppCompatActivity() {
                 25, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }
-
-        //  Apply design to text-view
+        //  apply design to text-view
         binding.txtAlreadyAccount.apply {
             text = spannableString2
             movementMethod = LinkMovementMethod.getInstance()   // handle clickable link
