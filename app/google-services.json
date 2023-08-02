@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1015268625751",
+    "project_id": "uberpath-4c4a1",
+    "storage_bucket": "uberpath-4c4a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015268625751:android:3d3039d583c771f4f3c212",
+        "android_client_info": {
+          "package_name": "com.ipsmeet.uberpath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015268625751-2n005lscivuj9vlu4skq5va0vkq9o7n2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgCDJPvNoH6hVVrmMwJJrcdcjQSprunxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015268625751-2n005lscivuj9vlu4skq5va0vkq9o7n2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

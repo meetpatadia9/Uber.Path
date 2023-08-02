@@ -1,5 +1,6 @@
 package com.ipsmeet.uberpath.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -12,11 +13,22 @@ import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivitySignUpBinding
+import com.ipsmeet.uberpath.viewmodel.AuthenticationViewModel
 import java.util.regex.Pattern
 
 class SignUpActivity : AppCompatActivity() {
@@ -33,10 +45,19 @@ class SignUpActivity : AppCompatActivity() {
                 ")+"
     )
 
+    private lateinit var authViewModel: AuthenticationViewModel
+    private lateinit var gsc: GoogleSignInClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //  Initialize view-model
+        authViewModel = ViewModelProvider(this)[AuthenticationViewModel::class.java]
+
+        //  Initialize google-authentication
+        gsc = authViewModel.initializeGoogleAuth(this)
 
         //  BACK BUTTON
         binding.btnBack.setOnClickListener {
@@ -58,9 +79,17 @@ class SignUpActivity : AppCompatActivity() {
 
         //  SIGN-UP BUTTON
         binding.btnSignUp.setOnClickListener {
-            startActivity(
-                Intent(this, CountryActivity::class.java)
-            )
+            updateUI()
+        }
+
+        //  GOOGLE LOGIN
+        binding.btnGoogleLogin.setOnClickListener {
+            startGoogleAuth()
+        }
+
+        //  APPLE LOGIN
+        binding.btnAppleLogin.setOnClickListener {
+            Toast.makeText(this, "Not available for this device.", Toast.LENGTH_SHORT).show()
         }
 
         //  STRING-2
@@ -92,6 +121,46 @@ class SignUpActivity : AppCompatActivity() {
             movementMethod = LinkMovementMethod.getInstance()   // handle clickable link
             highlightColor = Color.TRANSPARENT  // won't show highlighting color, when the link is pressed
         }
+    }
+
+    private fun startGoogleAuth() {
+        val authIntent = gsc.signInIntent
+        googleAuthLauncher.launch(authIntent)
+    }
+
+    private val googleAuthLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            handleResult(
+                GoogleSignIn.getSignedInAccountFromIntent(it.data)
+            )
+        }
+    }
+
+    private fun handleResult(task: Task<GoogleSignInAccount>) {
+        if (task.isSuccessful) {
+            val account: GoogleSignInAccount = task.result
+            if (account != null) {
+                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                //  Sign-in-with-credential
+                FirebaseAuth.getInstance().signInWithCredential(credential)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            updateUI()
+                        } else {
+                            Log.e("Auth FAIL", it.exception!!.message.toString())
+                        }
+                    }
+            }
+            else {
+                Log.e("Task FAIL", "handleResult: ${ task.exception!!.message.toString() }")
+            }
+        }
+    }
+
+    private fun updateUI() {
+        startActivity(
+            Intent(this, CountryActivity::class.java)
+        )
     }
 
     //  TEXT-WATCHER

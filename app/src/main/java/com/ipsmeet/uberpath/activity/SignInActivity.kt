@@ -1,5 +1,6 @@
 package com.ipsmeet.uberpath.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -10,11 +11,22 @@ import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.ktx.Firebase
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivitySignInBinding
+import com.ipsmeet.uberpath.viewmodel.AuthenticationViewModel
 import java.util.regex.Pattern
 
 class SignInActivity : AppCompatActivity() {
@@ -33,10 +45,19 @@ class SignInActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
 
+    private lateinit var authViewModel: AuthenticationViewModel
+    private lateinit var gsc: GoogleSignInClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //  Initialize view-model
+        authViewModel = ViewModelProvider(this)[AuthenticationViewModel::class.java]
+
+        //  Initialize google-authentication
+        gsc = authViewModel.initializeGoogleAuth(this)
 
         //  Initialize shared-preference
         sharedPreferences = getSharedPreferences("sharedPreference", MODE_PRIVATE)
@@ -81,12 +102,12 @@ class SignInActivity : AppCompatActivity() {
 
         //  GOOGLE SIGN-IN
         binding.btnGoogleLogin.setOnClickListener {
-            Toast.makeText(this, "Continue with Google", Toast.LENGTH_SHORT).show()
+            startGoogleAuth()
         }
 
         //  APPLE SIGN-IN
         binding.btnAppleLogin.setOnClickListener {
-            Toast.makeText(this, "Continue with Apple ID", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Not available for this device.", Toast.LENGTH_SHORT).show()
         }
 
         //  String
@@ -125,6 +146,40 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+    private fun startGoogleAuth() {
+        val authIntent = gsc.signInIntent
+        googleAuthLauncher.launch(authIntent)
+    }
+
+    private val googleAuthLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            handleResult(
+                GoogleSignIn.getSignedInAccountFromIntent(it.data)
+            )
+        }
+    }
+
+    private fun handleResult(task: Task<GoogleSignInAccount>) {
+        if (task.isSuccessful) {
+            val account: GoogleSignInAccount = task.result
+            if (account != null) {
+                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                //  Sign-in-with-credential
+                FirebaseAuth.getInstance().signInWithCredential(credential)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            updateUI()
+                        } else {
+                            Log.e("Auth FAIL", it.exception!!.message.toString())
+                        }
+                    }
+            }
+            else {
+                Log.e("Task FAIL", "handleResult: ${ task.exception!!.message.toString() }")
+            }
+        }
+    }
+
     private fun updateUI() {
         startActivity(
             Intent(this, HomeActivity::class.java)
@@ -155,7 +210,7 @@ class SignInActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val isLogged = sharedPreferences.getBoolean("isLogged", false)
-        if (isLogged) {
+        if (isLogged || FirebaseAuth.getInstance().currentUser != null) {
             updateUI()
         }
     }

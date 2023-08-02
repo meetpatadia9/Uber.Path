@@ -103,4 +103,6 @@
     <string name="txt_set_your_pin_code">Set your PIN code</string>
     <string name="txt_set_pin_description">We use state-of-the-art security measures to protect your information at all times</string>
     <string name="txt_create_pin">Create PIN</string>
+
+    <string name="web_client_id">1015268625751-pb3mdim3h5erisknip7u6fkc28559b0b.apps.googleusercontent.com</string>
 </resources>
