@@ -8,26 +8,27 @@ import android.text.style.ForegroundColorSpan
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivityVerifyIdentityBinding
+import com.ipsmeet.uberpath.viewmodel.SpannableStringViewModel
 
 class VerifyIdentityActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityVerifyIdentityBinding
     private var isChecked = false
 
+    private lateinit var spannableString: SpannableStringViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifyIdentityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val spannableString = SpannableString(getText(R.string.txt_verification_code_info))
-        spannableString.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(this@VerifyIdentityActivity, R.color.green)),
-            21, 31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        binding.txtDescription.text = spannableString
+        spannableString = ViewModelProvider(this)[SpannableStringViewModel::class.java]
+
+        binding.txtDescription.text = spannableString.sendSecurityCode(this)
 
         binding.userEmail.text = intent.getStringExtra("email")
 
