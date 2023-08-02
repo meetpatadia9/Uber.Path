@@ -9,13 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.*
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.text.style.ForegroundColorSpan
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -23,10 +19,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.ktx.Firebase
-import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivitySignInBinding
 import com.ipsmeet.uberpath.viewmodel.AuthenticationViewModel
+import com.ipsmeet.uberpath.viewmodel.SpannableStringViewModel
 import java.util.regex.Pattern
 
 class SignInActivity : AppCompatActivity() {
@@ -45,6 +40,7 @@ class SignInActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
 
+    private lateinit var spannableString: SpannableStringViewModel
     private lateinit var authViewModel: AuthenticationViewModel
     private lateinit var gsc: GoogleSignInClient
 
@@ -53,8 +49,9 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //  Initialize view-model
+        //  Initialize view-models
         authViewModel = ViewModelProvider(this)[AuthenticationViewModel::class.java]
+        spannableString = ViewModelProvider(this)[SpannableStringViewModel::class.java]
 
         //  Initialize google-authentication
         gsc = authViewModel.initializeGoogleAuth(this)
@@ -110,37 +107,9 @@ class SignInActivity : AppCompatActivity() {
             Toast.makeText(this, "Not available for this device.", Toast.LENGTH_SHORT).show()
         }
 
-        //  String
-        val spannableString = SpannableString(getText(R.string.txt_no_account))
-        //  Create clickable part of string
-        val clickablePart = object : ClickableSpan() {
-            //  when user click on that particular part
-            override fun onClick(widget: View) {
-                startActivity(
-                    Intent(this@SignInActivity, SignUpActivity::class.java)
-                )
-            }
-
-            //  To remove underline of Linked/Clickable part
-            override fun updateDrawState(ds: TextPaint) {
-                ds.isUnderlineText = false
-            }
-        }
-
-        //  Apply all the properties to string
-        spannableString.apply {
-            //  enable clickable part
-            setSpan(clickablePart, 23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            //  apply color to that part
-            setSpan(
-                ForegroundColorSpan(ContextCompat.getColor(this@SignInActivity, R.color.green)),
-                23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-        }
-
         //  Apply design to text-view
         binding.txtNoAccount.apply {
-            text = spannableString
+            text = spannableString.doNotHaveAccount(this@SignInActivity)
             movementMethod = LinkMovementMethod.getInstance()   // handle clickable link
             highlightColor = Color.TRANSPARENT  // won't show highlighting color, when the link is pressed
         }

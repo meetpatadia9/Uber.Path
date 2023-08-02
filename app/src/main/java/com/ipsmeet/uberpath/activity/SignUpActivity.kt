@@ -29,6 +29,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivitySignUpBinding
 import com.ipsmeet.uberpath.viewmodel.AuthenticationViewModel
+import com.ipsmeet.uberpath.viewmodel.SpannableStringViewModel
 import java.util.regex.Pattern
 
 class SignUpActivity : AppCompatActivity() {
@@ -45,6 +46,7 @@ class SignUpActivity : AppCompatActivity() {
                 ")+"
     )
 
+    private lateinit var spannableString: SpannableStringViewModel
     private lateinit var authViewModel: AuthenticationViewModel
     private lateinit var gsc: GoogleSignInClient
 
@@ -53,8 +55,9 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //  Initialize view-model
+        //  Initialize view-models
         authViewModel = ViewModelProvider(this)[AuthenticationViewModel::class.java]
+        spannableString = ViewModelProvider(this)[SpannableStringViewModel::class.java]
 
         //  Initialize google-authentication
         gsc = authViewModel.initializeGoogleAuth(this)
@@ -64,15 +67,8 @@ class SignUpActivity : AppCompatActivity() {
             finish()
         }
 
-        //  STRING-1
-        val spannableString1 = SpannableString(getText(R.string.txt_create_account))
-        //  apply color
-        spannableString1.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(this@SignUpActivity, R.color.green)),
-            9, 19, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
         //  apply design to text-view
-        binding.txtCreateAccount.text = spannableString1
+        binding.txtCreateAccount.text = spannableString.titleCreateAccount(this)
 
         binding.edtxtFullName.addTextChangedListener(textWatcher)
         binding.edtxtEmail.addTextChangedListener(textWatcher)
@@ -92,32 +88,9 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this, "Not available for this device.", Toast.LENGTH_SHORT).show()
         }
 
-        //  STRING-2
-        val spannableString2 = SpannableString(getText(R.string.txt_already_have_account))
-        //  create clickable part of string
-        val clickablePart = object : ClickableSpan() {
-            //  when user click on that particular part
-            override fun onClick(widget: View) {
-                finish()
-            }
-            //  To remove underline of Linked/Clickable part
-            override fun updateDrawState(ds: TextPaint) {
-                ds.isUnderlineText = false
-            }
-        }
-        //  apply all the properties to string
-        spannableString2.apply {
-            //  enable clickable part
-            setSpan(clickablePart, 25, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            //  apply color to that part
-            setSpan(
-                ForegroundColorSpan(ContextCompat.getColor(this@SignUpActivity, R.color.green)),
-                25, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-        }
-        //  apply design to text-view
+        //  Apply design to text-view
         binding.txtAlreadyAccount.apply {
-            text = spannableString2
+            text = spannableString.alreadyHaveAccount(this@SignUpActivity)
             movementMethod = LinkMovementMethod.getInstance()   // handle clickable link
             highlightColor = Color.TRANSPARENT  // won't show highlighting color, when the link is pressed
         }
