@@ -9,8 +9,10 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivityOtpactivityBinding
+import com.ipsmeet.uberpath.viewmodel.SpannableStringViewModel
 
 class OTPActivity : AppCompatActivity() {
 
@@ -19,10 +21,14 @@ class OTPActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
 
+    lateinit var spannableString: SpannableStringViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOtpactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        spannableString = ViewModelProvider(this)[SpannableStringViewModel::class.java]
 
         //  BACK BUTTON
         binding.btnBack.setOnClickListener {
@@ -35,20 +41,7 @@ class OTPActivity : AppCompatActivity() {
 
         val email = intent.getStringExtra("email")
 
-        //  String
-        val spannableString = SpannableString(getString(R.string.txt_verification_instruction, email))
-
-        //  Apply property to string
-        spannableString.apply {
-            setSpan(
-                StyleSpan(android.graphics.Typeface.BOLD), 18, 18+email!!.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-            setSpan(
-                ForegroundColorSpan(ContextCompat.getColor(this@OTPActivity, R.color.blue)),
-                18, 18+email.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-        }
-        binding.txtDescription.text = spannableString
+        binding.txtDescription.text = spannableString.verifyItsYou(email, this)
 
         //  CONFIRM BUTTON
         binding.btnConfirm.setOnClickListener {

@@ -3,11 +3,13 @@ package com.ipsmeet.uberpath.viewmodel
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
@@ -93,10 +95,31 @@ class SpannableStringViewModel: ViewModel() {
     //  VERIFY-IDENTITY ACTIVITY
     fun sendSecurityCode(context: Context): SpannableString {
         val spannableString = SpannableString(context.getText(R.string.txt_verification_code_info))
+
         spannableString.setSpan(
             ForegroundColorSpan(ContextCompat.getColor(context, R.color.green)),
             21, 31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
+
+        return spannableString
+    }
+
+    //  OTP ACTIVITY
+    fun verifyItsYou(email: String?, context: Context): SpannableString {
+        val spannableString = SpannableString(context.getString(R.string.txt_verification_instruction, email))
+
+        spannableString.apply {
+            //  bold text
+            setSpan(
+                StyleSpan(Typeface.BOLD), 18, 18+email!!.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            //  color text
+            setSpan(
+                ForegroundColorSpan(ContextCompat.getColor(context, R.color.blue)),
+                18, 18+email.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+
         return spannableString
     }
 
