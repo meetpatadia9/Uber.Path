@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/img_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/menu_myCard"
+        android:icon="@drawable/img_my_card"
+        android:title="My Card" />
+
+    <item
+        android:id="@+id/space1"
+        android:title="" />
+
+    <item
+        android:id="@+id/menu_activity"
+        android:icon="@drawable/img_activity"
+        android:title="Activity" />
+
+
+    <item
+        android:id="@+id/menu_profile"
+        android:icon="@drawable/img_user"
+        android:title="Profile" />
+
+</menu>

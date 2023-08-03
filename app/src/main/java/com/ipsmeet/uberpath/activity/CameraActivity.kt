@@ -1,9 +1,12 @@
 package com.ipsmeet.uberpath.activity
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.hardware.camera2.*
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.ipsmeet.uberpath.databinding.ActivityCameraBinding
 import com.ipsmeet.uberpath.viewmodel.CameraPreviewViewModel
@@ -29,20 +32,25 @@ class CameraActivity : AppCompatActivity() {
 
         //  VERIFY-IDENTITY [OPEN CAMERA] BUTTON
         binding.btnVerifyIdentity.setOnClickListener {
-            cameraPreview.openCamPreview(this, applicationContext, binding, binding.camPreview)
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                cameraPreview.openCamPreview(this, applicationContext, binding, binding.camPreview)
+//                cameraPreview.createCameraPreview(this)
+            } else {
+                cameraPreview.checkCameraPermission(this)
+            }
         }
     }
 
     override fun onResume() {
         super.onResume()
-        cameraPreview.closeCamPreview(binding)
+        cameraPreview.closeCamPreview(this, binding)
     }
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (binding.camPreview.camView.visibility == View.VISIBLE) {
             cameraDevice?.close()
-            cameraPreview.closeCamPreview(binding)
+            cameraPreview.closeCamPreview(this, binding)
         } else {
             super.onBackPressed()
         }

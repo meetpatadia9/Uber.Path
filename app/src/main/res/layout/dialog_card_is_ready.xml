@@ -97,7 +97,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/imgV_star_pattern"
             app:maxImageSize="@dimen/_70sdp"
-            app:srcCompat="@drawable/img"
+            app:srcCompat="@drawable/img_dialog_credit_card"
             app:tint="@null" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,55 @@
+package com.ipsmeet.uberpath.fragments
+
+import android.content.Context
+import android.content.SharedPreferences
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ipsmeet.uberpath.R
+import com.ipsmeet.uberpath.adapter.TransactionAdapter
+import com.ipsmeet.uberpath.databinding.FragmentHomeBinding
+import com.ipsmeet.uberpath.dataclass.TransactionDataClass
+
+class HomeFragment : Fragment() {
+
+    lateinit var binding: FragmentHomeBinding
+    private lateinit var sharedPreferences: SharedPreferences
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.green)
+        sharedPreferences = requireContext().getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        // Inflate the layout for this fragment
+        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.txtUserName.text = sharedPreferences.getString("usersName", "Test User")
+
+        val transactionList = arrayListOf<TransactionDataClass>()
+        transactionList.apply {
+            add(TransactionDataClass(R.drawable.img_basketball, "Sports Shop", "Payment", "$15.99"))
+            add(TransactionDataClass(R.drawable.img_money_receive, "From Test User9", "Received", "$61.18"))
+            add(TransactionDataClass(R.drawable.img_money_receive, "Bank of Baroda", "Deposit", "$2,045.00"))
+            add(TransactionDataClass(R.drawable.img_send, "To Test User1", "Sent", "$986.00"))
+        }
+
+        binding.recyclerViewHomeTransaction.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            adapter = TransactionAdapter(requireActivity(), transactionList)
+            addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+        }
+    }
+
+}

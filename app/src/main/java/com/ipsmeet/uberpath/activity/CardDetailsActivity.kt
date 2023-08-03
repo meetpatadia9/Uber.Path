@@ -2,6 +2,8 @@ package com.ipsmeet.uberpath.activity
 
 import android.app.Dialog
 import android.content.Intent
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -17,12 +19,17 @@ class CardDetailsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityCardDetailsBinding
 
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var editor: Editor
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCardDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        when(intent.getStringExtra("cardStyle").toString()) {
+        val cardStyle = intent.getStringExtra("cardStyle").toString()
+
+        when(cardStyle) {
             "cardOne" -> {
                 Glide.with(this).load(R.drawable.img_card_style1).into(binding.imgVSelectedCardStyle)
             }
@@ -33,6 +40,12 @@ class CardDetailsActivity : AppCompatActivity() {
                 Glide.with(this).load(R.drawable.img_card_style3).into(binding.imgVSelectedCardStyle)
             }
         }
+
+        sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+
+        editor.putString("cardStyle", cardStyle)
+        editor.apply()
 
         //  BACK BUTTON
         binding.btnBack.setOnClickListener {

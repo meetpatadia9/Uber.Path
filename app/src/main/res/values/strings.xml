@@ -103,6 +103,18 @@
     <string name="txt_set_your_pin_code">Set your PIN code</string>
     <string name="txt_set_pin_description">We use state-of-the-art security measures to protect your information at all times</string>
     <string name="txt_create_pin">Create PIN</string>
+    <string name="txt_focus_on_your_face">Focus on your face</string>
+    <string name="txt_welcome_back">Welcome back!</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_deposit">Deposit</string>
+    <string name="txt_transfers">Transfers</string>
+    <string name="txt_withdraw">Withdraw</string>
+    <string name="txt_more">More</string>
+    <string name="txt_all_transaction">All transaction</string>
+    <string name="cd_right_arrow">Right arrow</string>
 
     <string name="web_client_id">1015268625751-pb3mdim3h5erisknip7u6fkc28559b0b.apps.googleusercontent.com</string>
+
+    <string name="plus">+ %1$s</string>
+    <string name="minus">- %1$s</string>
 </resources>
