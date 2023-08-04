@@ -47,7 +47,6 @@
     <string name="cd_add">Add</string>
     <string name="cd_logo_mastercard">Logo MasterCard</string>
     <string name="fake_card_num">**** 2504</string>
-    <string name="txt_tommy">Tommy Wilfred Jason</string>
     <string name="cd_tommy_image">Tommy Image</string>
     <string name="txt_enable_biometric_access">Enable biometric access</string>
     <string name="txt_full_name">Full name</string>
@@ -112,9 +111,41 @@
     <string name="txt_more">More</string>
     <string name="txt_all_transaction">All transaction</string>
     <string name="cd_right_arrow">Right arrow</string>
+    <string name="toPlusRecipient">to %1$s</string>
+
+    <string name="txt_tommy">Tommy Wilfred Jason</string>
+    <string name="txt_linda">Linda John</string>
+    <string name="txt_david">David William</string>
+    <string name="txt_susan">Susan Charles</string>
 
     <string name="web_client_id">1015268625751-pb3mdim3h5erisknip7u6fkc28559b0b.apps.googleusercontent.com</string>
 
     <string name="plus">+ %1$s</string>
     <string name="minus">- %1$s</string>
+    <string name="txt_icon">Icon</string>
+    <string name="txt_show_qr_code">Show QR Code</string>
+    <string name="txt_qr_description">This is a single-use code for your use only. Get a new code each time you pay with smartpay</string>
+    <string name="txt_user_qr">User QR</string>
+    <string name="txt_information">Information</string>
+    <string name="txt_test_card_num">**** **** **** 1121</string>
+    <string name="txt_transfer">Transfer</string>
+    <string name="txt_choose_cards">Choose cards</string>
+    <string name="txt_choose_recipients">Choose recipients</string>
+    <string name="txt_user_profile">User profile</string>
+    <string name="txt_send_money">Send Money</string>
+    <string name="txt_enter_amount">Enter amount:</string>
+    <string name="txt_demo_limit">Max $12,652.00</string>
+    <string name="txt_usd">USD</string>
+    <string name="zero">0</string>
+    <string name="txt_ok_send_now">Ok, Send Now!</string>
+    <string name="txt_transfer_confirmation">Transfer Confirmation</string>
+    <string name="txt_boa">Bank of\nAmerica</string>
+    <string name="txt_amt">$865.10</string>
+    <string name="txt_from">From</string>
+    <string name="txt_to">To</string>
+    <string name="txt_total">Total</string>
+    <string name="txt_image_transfer_money">Image transfer money</string>
+    <string name="txt_transfer_successful">Transfer Successful</string>
+    <string name="txt_transfer_instruction">Transfers are reviewed which may result in delays or funds being frozen</string>
+    <string name="txt_back_to_home">Back to Home</string>
 </resources>

@@ -1,10 +1,8 @@
 package com.ipsmeet.uberpath.activity
 
-import android.content.SharedPreferences
-import android.content.SharedPreferences.Editor
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivityHomeBinding
 import com.ipsmeet.uberpath.fragments.ActivityFragment
@@ -64,6 +62,12 @@ class HomeActivity : AppCompatActivity() {
 
                 else -> { false }
             }
+        }
+
+        binding.fab.setOnClickListener {
+            startActivity(
+                Intent(this, QRScanActivity::class.java)
+            )
         }
     }
 

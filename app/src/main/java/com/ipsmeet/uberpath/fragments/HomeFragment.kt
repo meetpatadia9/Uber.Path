@@ -1,6 +1,7 @@
 package com.ipsmeet.uberpath.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
+import com.ipsmeet.uberpath.activity.TransferActivity
 import com.ipsmeet.uberpath.adapter.TransactionAdapter
 import com.ipsmeet.uberpath.databinding.FragmentHomeBinding
 import com.ipsmeet.uberpath.dataclass.TransactionDataClass
@@ -35,7 +37,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.txtUserName.text = sharedPreferences.getString("usersName", "Test User")
+        binding.txtUserName.text = sharedPreferences.getString("usersName", requireContext().getString(R.string.txt_tommy))
 
         val transactionList = arrayListOf<TransactionDataClass>()
         transactionList.apply {
@@ -43,6 +45,12 @@ class HomeFragment : Fragment() {
             add(TransactionDataClass(R.drawable.img_money_receive, "From Test User9", "Received", "$61.18"))
             add(TransactionDataClass(R.drawable.img_money_receive, "Bank of Baroda", "Deposit", "$2,045.00"))
             add(TransactionDataClass(R.drawable.img_send, "To Test User1", "Sent", "$986.00"))
+        }
+
+        binding.layoutTransfers.setOnClickListener {
+            requireContext().startActivity(
+                Intent(requireContext(), TransferActivity::class.java)
+            )
         }
 
         binding.recyclerViewHomeTransaction.apply {
