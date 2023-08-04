@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.activity.TransferActivity
+import com.ipsmeet.uberpath.activity.WithdrawActivity
 import com.ipsmeet.uberpath.adapter.TransactionAdapter
 import com.ipsmeet.uberpath.databinding.FragmentHomeBinding
 import com.ipsmeet.uberpath.dataclass.TransactionDataClass
@@ -47,9 +48,17 @@ class HomeFragment : Fragment() {
             add(TransactionDataClass(R.drawable.img_send, "To Test User1", "Sent", "$986.00"))
         }
 
+        //  TRANSFERS
         binding.layoutTransfers.setOnClickListener {
             requireContext().startActivity(
                 Intent(requireContext(), TransferActivity::class.java)
+            )
+        }
+
+        //  WITHDRAW
+        binding.layoutWithdraw.setOnClickListener {
+            requireContext().startActivity(
+                Intent(requireContext(), WithdrawActivity::class.java)
             )
         }
 

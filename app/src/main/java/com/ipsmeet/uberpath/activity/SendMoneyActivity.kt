@@ -24,6 +24,10 @@ class SendMoneyActivity : AppCompatActivity() {
         binding = ActivitySendMoneyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
+
         binding.edtxtAmt.addTextChangedListener(textWatcher)
 
         binding.btnSendMoney.setOnClickListener {
@@ -80,6 +84,11 @@ class SendMoneyActivity : AppCompatActivity() {
     private fun transferConfirm() {
         binding.layoutSendMoney.visibility = View.GONE
         binding.includedLayout.layoutTransferConfirm.visibility = View.VISIBLE
+
+        binding.includedLayout.btnBack.setOnClickListener {
+            binding.layoutSendMoney.visibility = View.VISIBLE
+            binding.includedLayout.layoutTransferConfirm.visibility = View.GONE
+        }
 
         binding.includedLayout.btnHome.setOnClickListener {
             startActivity(

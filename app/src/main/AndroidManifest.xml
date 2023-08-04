@@ -17,6 +17,9 @@
         android:theme="@style/Theme.UberPath"
         tools:targetApi="31">
         <activity
+            android:name=".activity.WithdrawActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.SendMoneyActivity"
             android:exported="false" />
         <activity

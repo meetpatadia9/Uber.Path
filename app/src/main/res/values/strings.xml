@@ -148,4 +148,12 @@
     <string name="txt_transfer_successful">Transfer Successful</string>
     <string name="txt_transfer_instruction">Transfers are reviewed which may result in delays or funds being frozen</string>
     <string name="txt_back_to_home">Back to Home</string>
+    <string name="txt_bank_of_america">Bank of America</string>
+    <string name="txt_25">25%</string>
+    <string name="txt_50">50%</string>
+    <string name="txt_75">75%</string>
+    <string name="txt_100">100%</string>
+    <string name="txt_select_your_bank">Select your bank</string>
+    <string name="txt_add_new_bank">Add new bank</string>
+    <string name="image_bank">Image bank</string>
 </resources>
