@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
+import com.ipsmeet.uberpath.activity.HistoryActivity
 import com.ipsmeet.uberpath.activity.TopUpActivity
 import com.ipsmeet.uberpath.activity.TransferActivity
 import com.ipsmeet.uberpath.activity.WithdrawActivity
@@ -41,14 +42,6 @@ class HomeFragment : Fragment() {
 
         binding.txtUserName.text = sharedPreferences.getString("usersName", requireContext().getString(R.string.txt_tommy))
 
-        val transactionList = arrayListOf<TransactionDataClass>()
-        transactionList.apply {
-            add(TransactionDataClass(R.drawable.img_basketball, "Sports Shop", "Payment", "$15.99"))
-            add(TransactionDataClass(R.drawable.img_money_receive, "From Test User9", "Received", "$61.18"))
-            add(TransactionDataClass(R.drawable.img_money_receive, "Bank of Baroda", "Deposit", "$2,045.00"))
-            add(TransactionDataClass(R.drawable.img_send, "To Test User1", "Sent", "$986.00"))
-        }
-
         //  TOP-UP
         binding.layoutDeposit.setOnClickListener {
             requireContext().startActivity(
@@ -68,6 +61,21 @@ class HomeFragment : Fragment() {
             requireContext().startActivity(
                 Intent(requireContext(), WithdrawActivity::class.java)
             )
+        }
+
+        //  HISTORY TRANSACTION
+        binding.txtAllTransaction.setOnClickListener {
+            requireContext().startActivity(
+                Intent(requireContext(), HistoryActivity::class.java)
+            )
+        }
+
+        val transactionList = arrayListOf<TransactionDataClass>()
+        transactionList.apply {
+            add(TransactionDataClass(R.drawable.img_basketball, "Sports Shop", "Payment", "$15.99", "December 28"))
+            add(TransactionDataClass(R.drawable.img_money_receive, "From Test User9", "Received", "$61.18", "November 28"))
+            add(TransactionDataClass(R.drawable.img_money_receive, "Bank of Baroda", "Deposit", "$2,045.00", "October 28"))
+            add(TransactionDataClass(R.drawable.img_send, "To Test User1", "Sent", "$986.00", "September 28"))
         }
 
         binding.recyclerViewHomeTransaction.apply {

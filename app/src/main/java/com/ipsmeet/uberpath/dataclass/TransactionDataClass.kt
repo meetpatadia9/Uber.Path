@@ -4,5 +4,6 @@ data class TransactionDataClass(
     val icon: Int,
     val name: String,
     val type: String,
-    val amount: String
+    val amount: String,
+    val date: String
 )

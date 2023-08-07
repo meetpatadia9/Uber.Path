@@ -109,7 +109,7 @@
     <string name="txt_transfers">Transfers</string>
     <string name="txt_withdraw">Withdraw</string>
     <string name="txt_more">More</string>
-    <string name="txt_all_transaction">All transaction</string>
+    <string name="txt_all_transaction">All transactions</string>
     <string name="cd_right_arrow">Right arrow</string>
     <string name="toPlusRecipient">to %1$s</string>
 
@@ -171,4 +171,17 @@
     <string name="txt_fee">Fee</string>
     <string name="txt_top_up_success">Top Up Success</string>
     <string name="txt_top_up_done_confirm_msg">Top up are reviewed which may result in delays or funds being frozen</string>
+    <string name="txt_current_balance">Current balance</string>
+    <string name="txt_12_256">$12,256.00</string>
+    <string name="txt_bank_account_num">Bank account : %1$s</string>
+    <string name="txt_transaction_history">Transaction history</string>
+    <string name="cd_refresh">Refresh</string>
+    <string name="cd_eye">Eye</string>
+    <string name="txt_line">Line</string>
+    <string name="txt_568_18">$568.18</string>
+    <string name="txt_25_6">25.6%</string>
+    <string name="cd_up_or_down">Up or Down</string>
+    <string name="txt_from_last_month">from last month</string>
+    <string name="cd_line_chart">Line chart</string>
+    <string name="cd_bar_chart">Bar chart</string>
 </resources>
