@@ -92,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
                     android:layout_marginTop="@dimen/_9sdp"
-                    android:background="@drawable/shape_line_devider"
+                    android:background="@drawable/shape_line_divider"
                     app:layout_constraintTop_toBottomOf="@id/txt_senderBankNo" />
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
                     android:layout_marginTop="@dimen/_9sdp"
-                    android:background="@drawable/shape_line_devider"
+                    android:background="@drawable/shape_line_divider"
                     app:layout_constraintTop_toBottomOf="@id/txt_receiverBankNo" />
 
                 <TextView

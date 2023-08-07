@@ -22,7 +22,6 @@
         android:id="@+id/txt_transfer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15sdp"
         android:text="@string/txt_transfer"
         android:textColor="@color/black"
         android:textSize="@dimen/_16ssp"

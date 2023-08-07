@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
+import com.ipsmeet.uberpath.activity.TopUpActivity
 import com.ipsmeet.uberpath.activity.TransferActivity
 import com.ipsmeet.uberpath.activity.WithdrawActivity
 import com.ipsmeet.uberpath.adapter.TransactionAdapter
@@ -46,6 +47,13 @@ class HomeFragment : Fragment() {
             add(TransactionDataClass(R.drawable.img_money_receive, "From Test User9", "Received", "$61.18"))
             add(TransactionDataClass(R.drawable.img_money_receive, "Bank of Baroda", "Deposit", "$2,045.00"))
             add(TransactionDataClass(R.drawable.img_send, "To Test User1", "Sent", "$986.00"))
+        }
+
+        //  TOP-UP
+        binding.layoutDeposit.setOnClickListener {
+            requireContext().startActivity(
+                Intent(requireContext(), TopUpActivity::class.java)
+            )
         }
 
         //  TRANSFERS

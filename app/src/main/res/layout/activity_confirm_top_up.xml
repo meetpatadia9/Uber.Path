@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_15sdp"
+    tools:context=".activity.ConfirmTopUpActivity">
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@drawable/shape_grey_button"
+        android:contentDescription="@string/cd_back_button"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/img_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/blue" />
+
+    <TextView
+        android:id="@+id/txt_topUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_confirmation"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    <ImageView
+        android:id="@+id/imgV_cardStyle2"
+        android:layout_width="@dimen/_270sdp"
+        android:layout_height="@dimen/_160sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:contentDescription="@string/cd_card_style_2"
+        android:src="@drawable/img_card_style2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back" />
+
+    <TextView
+        android:id="@+id/txt_top_up_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_27sdp"
+        android:text="@string/txt_top_up_balance"
+        android:textColor="@color/greyscale_500"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintStart_toStartOf="@id/imgV_cardStyle2"
+        app:layout_constraintTop_toBottomOf="@id/imgV_cardStyle2" />
+
+    <TextView
+        android:id="@+id/txt_topUpAmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/txt_top_up_balance"
+        app:layout_constraintEnd_toEndOf="@id/imgV_cardStyle2"
+        app:layout_constraintTop_toTopOf="@id/txt_top_up_balance"
+        tools:text="$2256.00" />
+
+    <TextView
+        android:id="@+id/txt_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="@string/txt_fee"
+        android:textColor="@color/greyscale_500"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintStart_toStartOf="@id/imgV_cardStyle2"
+        app:layout_constraintTop_toBottomOf="@id/txt_top_up_balance" />
+
+    <TextView
+        android:id="@+id/txt_feeAmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/txt_fee"
+        app:layout_constraintEnd_toEndOf="@id/imgV_cardStyle2"
+        app:layout_constraintTop_toTopOf="@id/txt_fee"
+        tools:text="$3.0" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/shape_line_divider"
+        app:layout_constraintTop_toBottomOf="@id/txt_fee" />
+
+    <TextView
+        android:id="@+id/txt_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="@string/txt_total"
+        android:textColor="@color/greyscale_500"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/imgV_cardStyle2"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
+
+    <TextView
+        android:id="@+id/txt_totalAmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/txt_total"
+        app:layout_constraintEnd_toEndOf="@id/imgV_cardStyle2"
+        app:layout_constraintTop_toTopOf="@id/txt_total"
+        tools:text="$2259.00" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_confirmTopUp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:background="@drawable/shape_button"
+        android:text="@string/txt_confirm_top_up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -122,6 +122,8 @@
 
     <string name="plus">+ %1$s</string>
     <string name="minus">- %1$s</string>
+    <string name="dollar_amt">$ %1$s</string>
+
     <string name="txt_icon">Icon</string>
     <string name="txt_show_qr_code">Show QR Code</string>
     <string name="txt_qr_description">This is a single-use code for your use only. Get a new code each time you pay with smartpay</string>
@@ -156,4 +158,17 @@
     <string name="txt_select_your_bank">Select your bank</string>
     <string name="txt_add_new_bank">Add new bank</string>
     <string name="image_bank">Image bank</string>
+    <string name="txt_top_up">Top Up</string>
+    <string name="txt_debit">Debit</string>
+    <string name="txtAmt_11_510">$11,510.00</string>
+    <string name="txt_top_up_fee">Top up fee $3.0</string>
+    <string name="txt_6000">$6000.00</string>
+    <string name="txt_3000">$3000.00</string>
+    <string name="txt_1500">$1500.00</string>
+    <string name="txt_confirmation">Confirmation</string>
+    <string name="txt_confirm_top_up">Confirm Top Up</string>
+    <string name="txt_top_up_balance">Top up balance</string>
+    <string name="txt_fee">Fee</string>
+    <string name="txt_top_up_success">Top Up Success</string>
+    <string name="txt_top_up_done_confirm_msg">Top up are reviewed which may result in delays or funds being frozen</string>
 </resources>

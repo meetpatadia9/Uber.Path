@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_15sdp">
+
+    <ImageView
+        android:id="@+id/imgV_topUp"
+        android:layout_width="@dimen/_210sdp"
+        android:layout_height="@dimen/_210sdp"
+        android:contentDescription="@string/txt_top_up"
+        android:src="@drawable/img_top_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_topUpSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/txt_top_up_success"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_18ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/imgV_topUp"
+        app:layout_constraintStart_toStartOf="@id/imgV_topUp"
+        app:layout_constraintTop_toBottomOf="@id/imgV_topUp" />
+
+    <TextView
+        android:id="@+id/txt_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/txt_top_up_done_confirm_msg"
+        android:textAlignment="center"
+        android:textColor="@color/greyscale_500"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgV_topUp"
+        app:layout_constraintStart_toStartOf="@id/imgV_topUp"
+        app:layout_constraintTop_toBottomOf="@id/txt_topUpSuccess" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_home"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_35sdp"
+        android:background="@drawable/shape_button"
+        android:text="@string/txt_back_to_home"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_description" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
