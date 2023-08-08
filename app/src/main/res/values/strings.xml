@@ -193,4 +193,10 @@
     <string name="txt_year">Year</string>
     <string name="txt_transaction">Transaction</string>
     <string name="txt_all">All</string>
+    <string name="txt_add_new_card">Add new card</string>
+    <string name="txt_my_card">My Card</string>
+    <string name="txt_edit_card">Edit Card</string>
+    <string name="txt_personal">Personal</string>
+    <string name="txt_manage">Manage</string>
+    <string name="txt_detail">Detail</string>
 </resources>

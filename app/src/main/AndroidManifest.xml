@@ -17,6 +17,9 @@
         android:theme="@style/Theme.UberPath"
         tools:targetApi="31">
         <activity
+            android:name=".activity.EditCardActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.DetailHistoryTransactionActivity"
             android:exported="false" />
         <activity
