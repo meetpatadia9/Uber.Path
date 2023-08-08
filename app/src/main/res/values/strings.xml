@@ -199,4 +199,25 @@
     <string name="txt_personal">Personal</string>
     <string name="txt_manage">Manage</string>
     <string name="txt_detail">Detail</string>
+    <string name="txt_profile">Profile</string>
+    <string name="txt_tommy_email">tommyjason@gmail.com</string>
+    <string name="txt_account_info">Account Info</string>
+    <string name="txt_edit">Edit</string>
+    <string name="txt_personal_info">Personal Info</string>
+    <string name="txt_your_name">Your name</string>
+    <string name="txt_occupation">Occupation</string>
+    <string name="txt_manager">Manager</string>
+    <string name="txt_employer">Employer</string>
+    <string name="txt_overlay_design">Overlay Design</string>
+    <string name="txt_us_citizen">U.S. Citizen</string>
+    <string name="txt_contact_info">Contact Info</string>
+    <string name="txt_phone_number">Phone number</string>
+    <string name="txt_tommy_contact">(1) 3256 8456 888</string>
+    <string name="txt_edit_account">Edit Account</string>
+    <string name="txt_select_language">Select Language</string>
+    <string name="txt_contacts">Contacts</string>
+    <string name="txt_faqs">FAQs</string>
+    <string name="txt_general_setting">General Setting</string>
+    <string name="txt_referral_code">Referral Code</string>
+    <string name="txt_contact_list">Contact List</string>
 </resources>
