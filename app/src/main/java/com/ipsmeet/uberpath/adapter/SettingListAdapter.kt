@@ -8,8 +8,8 @@ import com.bumptech.glide.Glide
 import com.ipsmeet.uberpath.databinding.RecyclerProfileBinding
 import com.ipsmeet.uberpath.dataclass.ProfileListDataClass
 
-class ProfileList1Adapter(val context: Context, val list: List<ProfileListDataClass>, val listener: OnClick)
-    : RecyclerView.Adapter<ProfileList1Adapter.ListViewHolder>(){
+class SettingListAdapter(val context: Context, val list: List<ProfileListDataClass>, private val listener: OnClick)
+    : RecyclerView.Adapter<SettingListAdapter.ListViewHolder>(){
 
     class ListViewHolder(val itemBinding: RecyclerProfileBinding)
         : RecyclerView.ViewHolder(itemBinding.root)

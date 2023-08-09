@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.activity.HistoryActivity
+import com.ipsmeet.uberpath.activity.NotificationActivity
 import com.ipsmeet.uberpath.activity.TopUpActivity
 import com.ipsmeet.uberpath.activity.TransferActivity
 import com.ipsmeet.uberpath.activity.WithdrawActivity
@@ -41,6 +42,12 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.txtUserName.text = sharedPreferences.getString("usersName", requireContext().getString(R.string.txt_tommy))
+
+        binding.btnNotification.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), NotificationActivity::class.java)
+            )
+        }
 
         //  TOP-UP
         binding.layoutDeposit.setOnClickListener {

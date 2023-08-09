@@ -220,4 +220,17 @@
     <string name="txt_general_setting">General Setting</string>
     <string name="txt_referral_code">Referral Code</string>
     <string name="txt_contact_list">Contact List</string>
+    <string name="txt_default_notification_actions">Default Notification Actions</string>
+    <string name="txt_here_s_20_free_on_us">Here’s $20 free on us!</string>
+    <string name="txt_share_you_referral_link_and_earn_n_20">Share you referral link and earn\n$20</string>
+    <string name="txt_for_any_account_you_connects">For any account you connects</string>
+    <string name="txt_get_3_free">Get $3 free</string>
+    <string name="cd_copy">Copy</string>
+    <string name="txt_share">Share</string>
+    <string name="txt_ref_code">LIK5896O</string>
+    <string name="txt_anyQue">You have any question ?</string>
+    <string name="txt_frequently_asked">Frequently Asked</string>
+    <string name="txt_view_all">View All</string>
+    <string name="txt_load_more">Load more</string>
+    <string name="txt_notification">Notification</string>
 </resources>

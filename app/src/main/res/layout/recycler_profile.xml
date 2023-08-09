@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_10sdp"
-    android:layout_marginBottom="@dimen/_10sdp">
+    android:layout_marginTop="@dimen/_13sdp"
+    android:layout_marginBottom="@dimen/_13sdp">
 
     <ImageView
         android:id="@+id/imgV_icon"

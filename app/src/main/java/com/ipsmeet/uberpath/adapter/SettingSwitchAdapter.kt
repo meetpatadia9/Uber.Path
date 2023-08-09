@@ -6,16 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ipsmeet.uberpath.databinding.RecyclerProfileBinding
+import com.ipsmeet.uberpath.databinding.RecyclerSettingsWSwitchBinding
 import com.ipsmeet.uberpath.dataclass.ProfileListDataClass
+import com.ipsmeet.uberpath.dataclass.SettingSwitchDataClass
 
-class ProfileList2Adapter(val context: Context, val list: List<ProfileListDataClass>, private val listener: OnClick)
-    : RecyclerView.Adapter<ProfileList2Adapter.ListViewHolder>(){
+class SettingSwitchAdapter(val context: Context, val list: List<SettingSwitchDataClass>)
+    : RecyclerView.Adapter<SettingSwitchAdapter.ListViewHolder>(){
 
-    class ListViewHolder(val itemBinding: RecyclerProfileBinding)
+    class ListViewHolder(val itemBinding: RecyclerSettingsWSwitchBinding)
         : RecyclerView.ViewHolder(itemBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val itemBinding = RecyclerProfileBinding.inflate(LayoutInflater.from(context), parent, false)
+        val itemBinding = RecyclerSettingsWSwitchBinding.inflate(LayoutInflater.from(context), parent, false)
         return ListViewHolder(itemBinding)
     }
 
@@ -25,19 +27,14 @@ class ProfileList2Adapter(val context: Context, val list: List<ProfileListDataCl
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.apply {
-            with (list[position]) {
-                Glide.with(context).load(this.icon).into(itemBinding.imgVIcon)
-                itemBinding.txtName.text = this.text
-
-                itemView.setOnClickListener {
-                    listener.onClickListener(this)
+            itemBinding.apply {
+                with (list[position]) {
+                    txtSettingName.text = this.title
+                    txtSettingDescription.text = this.description
+                    switchOnOff.isChecked = this.switch
                 }
             }
         }
-    }
-
-    interface OnClick {
-        fun onClickListener(profile: ProfileListDataClass)
     }
 
 }

@@ -123,4 +123,28 @@ class SpannableStringViewModel: ViewModel() {
         return spannableString
     }
 
+    //  REFERRAL ACTIVITY
+    fun free20dollars(context: Context): SpannableString {
+        val spannableString = SpannableString(context.getText(R.string.txt_here_s_20_free_on_us))
+
+        spannableString.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(context, R.color.black)),
+            11, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        return spannableString
+    }
+
+    //  REFERRAL ACTIVITY
+    fun free3dollars(context: Context): SpannableString {
+        val spannableString = SpannableString(context.getText(R.string.txt_get_3_free))
+
+        spannableString.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(context, R.color.black)),
+            7, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        return spannableString
+    }
+
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_15sdp"
-    tools:context=".activity.GeneralSettingActivity">
+    tools:context=".activity.NotificationActivity">
 
     <ImageView
         android:id="@+id/btn_back"
@@ -19,10 +19,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_generalSetting"
+        android:id="@+id/txt_showQR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txt_general_setting"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:text="@string/txt_notification"
         android:textColor="@color/black"
         android:textSize="@dimen/_16ssp"
         android:textStyle="bold"
@@ -31,28 +32,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/btn_back" />
 
+    <ImageView
+        android:id="@+id/btn_markRead"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@drawable/shape_grey_button"
+        android:contentDescription="@string/cd_back_button"
+        android:padding="@dimen/_7sdp"
+        android:src="@drawable/img_double_check"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_generalSetting"
+        android:id="@+id/recyclerView_notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_25sdp"
-        android:overScrollMode="never"
         app:layout_constraintTop_toBottomOf="@id/btn_back" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:background="@drawable/shape_line_divider"
-        app:layout_constraintTop_toBottomOf="@id/recyclerView_generalSetting" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_generalSettingSwitches"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:overScrollMode="never"
-        app:layout_constraintTop_toBottomOf="@id/divider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,9 +15,7 @@ import com.ipsmeet.uberpath.activity.FAQActivity
 import com.ipsmeet.uberpath.activity.GeneralSettingActivity
 import com.ipsmeet.uberpath.activity.ReferralCodeActivity
 import com.ipsmeet.uberpath.activity.SelectLanguageActivity
-import com.ipsmeet.uberpath.adapter.ProfileList1Adapter
-import com.ipsmeet.uberpath.adapter.ProfileList2Adapter
-import com.ipsmeet.uberpath.adapter.ProfileList3Adapter
+import com.ipsmeet.uberpath.adapter.SettingListAdapter
 import com.ipsmeet.uberpath.databinding.FragmentProfileBinding
 import com.ipsmeet.uberpath.dataclass.ProfileListDataClass
 
@@ -49,8 +47,8 @@ class ProfileFragment : Fragment() {
         }
         binding.recyclerViewProfile1.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            adapter = ProfileList1Adapter(requireContext(), list1,
-                object : ProfileList1Adapter.OnClick {
+            adapter = SettingListAdapter(requireContext(), list1,
+                object : SettingListAdapter.OnClick {
                     override fun onClickListener(profile: ProfileListDataClass) {
                         listOneOptions(profile)
                     }
@@ -66,8 +64,8 @@ class ProfileFragment : Fragment() {
         }
         binding.recyclerViewProfile2.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            adapter = ProfileList2Adapter(requireContext(), list2,
-                object : ProfileList2Adapter.OnClick {
+            adapter = SettingListAdapter(requireContext(), list2,
+                object : SettingListAdapter.OnClick {
                     override fun onClickListener(profile: ProfileListDataClass) {
                         listTwoOptions(profile)
                     }
@@ -82,8 +80,8 @@ class ProfileFragment : Fragment() {
         }
         binding.recyclerViewProfile3.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            adapter = ProfileList3Adapter(requireContext(), list3,
-                object : ProfileList3Adapter.OnClick {
+            adapter = SettingListAdapter(requireContext(), list3,
+                object : SettingListAdapter.OnClick {
                     override fun onClickListener(profile: ProfileListDataClass) {
                         listThreeOptions(profile)
                     }
