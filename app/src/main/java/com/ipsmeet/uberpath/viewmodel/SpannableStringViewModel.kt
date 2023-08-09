@@ -46,7 +46,6 @@ class SpannableStringViewModel: ViewModel() {
                 23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }
-
         return spannableString
     }
 
@@ -88,7 +87,6 @@ class SpannableStringViewModel: ViewModel() {
                 25, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }
-
         return spannableString
     }
 
@@ -100,7 +98,6 @@ class SpannableStringViewModel: ViewModel() {
             ForegroundColorSpan(ContextCompat.getColor(context, R.color.green)),
             21, 31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-
         return spannableString
     }
 
@@ -119,7 +116,6 @@ class SpannableStringViewModel: ViewModel() {
                 18, 18+email.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }
-
         return spannableString
     }
 
@@ -131,7 +127,6 @@ class SpannableStringViewModel: ViewModel() {
             ForegroundColorSpan(ContextCompat.getColor(context, R.color.black)),
             11, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-
         return spannableString
     }
 
@@ -143,7 +138,6 @@ class SpannableStringViewModel: ViewModel() {
             ForegroundColorSpan(ContextCompat.getColor(context, R.color.black)),
             7, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-
         return spannableString
     }
 
