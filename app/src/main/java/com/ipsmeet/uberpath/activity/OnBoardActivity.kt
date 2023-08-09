@@ -18,14 +18,11 @@ class OnBoardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnBoardBinding
 
-    //  shared-preference
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var editor: Editor
     private var isVisited = false
 
     private lateinit var timer: Timer
-
-    //  adapter
     private lateinit var onBoardAdapter: OnBoardAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,26 +30,21 @@ class OnBoardActivity : AppCompatActivity() {
         binding = ActivityOnBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //  Initialize shared-preference
         sharedPreferences = getSharedPreferences("sharedPreference", MODE_PRIVATE)
         editor = sharedPreferences.edit()
 
-        //  Initialize adapter
         onBoardAdapter = OnBoardAdapter(this)
         binding.viewpager.adapter = onBoardAdapter
 
         dotsIndicator()
 
-        //  Initialize timer
         timer = Timer()
         timer.scheduleAtFixedRate(sliderTimer, 4000, 4000)
 
-        //   GET-STARTED BUTTON
         binding.btnGetStarted.setOnClickListener {
             updateUI()
         }
 
-        //   SKIP BUTTON
         binding.txtSkip.setOnClickListener {
             updateUI()
         }
@@ -91,17 +83,6 @@ class OnBoardActivity : AppCompatActivity() {
         })
     }
 
-    //  EXIT FROM ON-BOARD-ACTIVITY
-    private fun updateUI() {
-        editor.putBoolean("isVisited", true)
-        editor.apply()
-
-        startActivity(
-            Intent(this, SignInActivity::class.java)
-        )
-        finish()
-    }
-
     private val sliderTimer = object : TimerTask() {
         override fun run() {
             runOnUiThread {
@@ -112,6 +93,17 @@ class OnBoardActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    //  EXIT FROM ON-BOARD-ACTIVITY
+    private fun updateUI() {
+        editor.putBoolean("isVisited", true)
+        editor.apply()
+
+        startActivity(
+            Intent(this, SignInActivity::class.java)
+        )
+        finish()
     }
 
     override fun onStart() {
@@ -126,4 +118,5 @@ class OnBoardActivity : AppCompatActivity() {
         super.onDestroy()
         timer.cancel()
     }
+
 }

@@ -24,12 +24,13 @@ class CardManageAdapter(val context: Context, private val manageSettings: List<C
     }
 
     override fun onBindViewHolder(holder: SettingViewHolder, position: Int) {
-        holder.apply {
-            with (manageSettings[position]) {
-                Glide.with(context).load(this.icon).into(itemBinding.imgVIcon)
-                itemBinding.txtName.text = this.name
-                itemBinding.switchOnOff.isChecked = this.isChecked
+        holder.itemBinding.apply {
+            with(manageSettings[position]) {
+                Glide.with(context).load(this.icon).into(imgVIcon)
+                txtName.text = this.name
+                switchOnOff.isChecked = this.isChecked
             }
         }
     }
+
 }

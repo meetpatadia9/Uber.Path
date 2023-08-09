@@ -19,10 +19,9 @@ class ActivityFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
-
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         binding = FragmentActivityBinding.inflate(layoutInflater, container, false)
         return binding.root

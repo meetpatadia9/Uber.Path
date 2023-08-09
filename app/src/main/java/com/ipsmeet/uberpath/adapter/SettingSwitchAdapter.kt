@@ -4,10 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.ipsmeet.uberpath.databinding.RecyclerProfileBinding
 import com.ipsmeet.uberpath.databinding.RecyclerSettingsWSwitchBinding
-import com.ipsmeet.uberpath.dataclass.ProfileListDataClass
 import com.ipsmeet.uberpath.dataclass.SettingSwitchDataClass
 
 class SettingSwitchAdapter(val context: Context, val list: List<SettingSwitchDataClass>)
@@ -26,13 +23,11 @@ class SettingSwitchAdapter(val context: Context, val list: List<SettingSwitchDat
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.apply {
-            itemBinding.apply {
-                with (list[position]) {
-                    txtSettingName.text = this.title
-                    txtSettingDescription.text = this.description
-                    switchOnOff.isChecked = this.switch
-                }
+        holder.itemBinding.apply {
+            with(list[position]) {
+                txtSettingName.text = this.title
+                txtSettingDescription.text = this.description
+                switchOnOff.isChecked = this.switch
             }
         }
     }

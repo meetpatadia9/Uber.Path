@@ -2,12 +2,11 @@ package com.ipsmeet.uberpath.activity
 
 import android.content.Intent
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import com.ipsmeet.uberpath.R
+import androidx.appcompat.app.AppCompatActivity
 import com.ipsmeet.uberpath.databinding.ActivityTopUpBinding
 
 class TopUpActivity : AppCompatActivity() {

@@ -65,4 +65,5 @@ class GeneralSettingActivity : AppCompatActivity() {
             adapter = SettingSwitchAdapter(this@GeneralSettingActivity, list2)
         }
     }
+
 }

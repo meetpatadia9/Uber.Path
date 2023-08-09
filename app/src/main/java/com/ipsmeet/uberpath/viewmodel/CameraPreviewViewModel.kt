@@ -40,7 +40,6 @@ class CameraPreviewViewModel: ViewModel() {
 
     private lateinit var cameraPreviewSurfaceTexture: SurfaceTexture
 
-
     fun checkCameraPermission(activity: Activity) {
         if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -182,7 +181,6 @@ class CameraPreviewViewModel: ViewModel() {
             Log.e("CameraActivity", "Failed to create camera session: ${e.message}")
         }
     }
-
 
     private fun getOptimalPreviewSize(context: Context): Size {
         val cameraManager = context.getSystemService(Context.CAMERA_SERVICE) as CameraManager

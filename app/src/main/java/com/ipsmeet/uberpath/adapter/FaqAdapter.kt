@@ -23,10 +23,10 @@ class FaqAdapter(val context: Context, private val faqs: List<FaqDataClass>)
     }
 
     override fun onBindViewHolder(holder: FaqViewHolder, position: Int) {
-        holder.apply {
+        holder.itemBinding.apply {
             with(faqs[position]) {
-                itemBinding.txtQue.text = this.que
-                itemBinding.txtAns.text = this.ans
+                txtQue.text = this.que
+                txtAns.text = this.ans
             }
         }
     }

@@ -14,16 +14,15 @@ class SetPINActivity : AppCompatActivity() {
         binding = ActivitySetPinactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
 
-        //  CREATE-PIN BUTTON
         binding.btnCreatePin.setOnClickListener {
             startActivity(
                 Intent(this, CameraActivity::class.java)
             )
         }
     }
+
 }

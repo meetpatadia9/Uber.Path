@@ -1,8 +1,7 @@
 package com.ipsmeet.uberpath.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ipsmeet.uberpath.R
+import androidx.appcompat.app.AppCompatActivity
 import com.ipsmeet.uberpath.databinding.ActivityQrScanBinding
 
 class QRScanActivity : AppCompatActivity() {
@@ -20,4 +19,5 @@ class QRScanActivity : AppCompatActivity() {
 
         binding.imgVYourQR.elevation = 15F
     }
+
 }

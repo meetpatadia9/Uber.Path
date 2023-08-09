@@ -48,9 +48,7 @@ class TransferActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@TransferActivity, LinearLayoutManager.HORIZONTAL, false)
             adapter = ContactAdapter(this@TransferActivity, contacts,
                 object : ContactAdapter.OnSelected {
-                    override fun recipientSelection(contact: ContactDataClass) {
-                        /* TODO() */
-                    }
+                    override fun recipientSelection(contact: ContactDataClass) { }
                 })
         }
 

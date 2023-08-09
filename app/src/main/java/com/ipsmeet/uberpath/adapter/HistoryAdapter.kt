@@ -3,7 +3,6 @@ package com.ipsmeet.uberpath.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ipsmeet.uberpath.databinding.RecyclerHistoryBinding
@@ -25,10 +24,11 @@ class HistoryAdapter(val context: Context, private val history: List<HistoryData
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        holder.apply {
+        holder.itemBinding.apply {
             with (history[position]) {
-                itemBinding.txtTransactionDay.text = this.date
-                itemBinding.recyclerViewTransaction.apply {
+                txtTransactionDay.text = this.date
+
+                recyclerViewTransaction.apply {
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                     adapter = TransactionAdapter(context, this@with.transaction)
                 }

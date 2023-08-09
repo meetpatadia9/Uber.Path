@@ -17,7 +17,7 @@ class TransactionAdapter(val context: Context, val list: List<TransactionDataCla
     : RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
 
     class TransactionViewHolder(val itemBinding: RecyclerTransactionBinding)
-        :RecyclerView.ViewHolder(itemBinding.root)
+        : RecyclerView.ViewHolder(itemBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
         val itemBinding = RecyclerTransactionBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -29,22 +29,22 @@ class TransactionAdapter(val context: Context, val list: List<TransactionDataCla
     }
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
-        holder.apply {
-            with (list[position]) {
-                Glide.with(context).load(this.icon).into(itemBinding.imgV)
-                itemBinding.txtName.text = this.name
-                itemBinding.txtType.text = this.type
+        holder.itemBinding.apply {
+            with(list[position]) {
+                Glide.with(context).load(this.icon).into(imgV)
+                txtName.text = this.name
+                txtType.text = this.type
 
                 if (this.type == "Deposit" || this.type == "Received" || this.type == "Freelance") {
-                    itemBinding.txtAmount.setTextColor(ContextCompat.getColor(context, R.color.green))
-                    itemBinding.txtAmount.text = context.getString(R.string.plus, this.amount)
+                    txtAmount.setTextColor(ContextCompat.getColor(context, R.color.green))
+                    txtAmount.text = context.getString(R.string.plus, this.amount)
                 }
                 else {
-                    itemBinding.txtAmount.setTextColor(ContextCompat.getColor(context, R.color.blue))
-                    itemBinding.txtAmount.text = context.getString(R.string.minus, this.amount)
+                    txtAmount.setTextColor(ContextCompat.getColor(context, R.color.blue))
+                    txtAmount.text = context.getString(R.string.minus, this.amount)
                 }
 
-                itemView.setOnClickListener {
+                root.setOnClickListener {
                     if (this.name == "Line premium") {
                         context.startActivity(
                             Intent(context, DetailHistoryTransactionActivity::class.java)

@@ -38,7 +38,6 @@ class PasswordRecoveryActivity : AppCompatActivity() {
 
         binding.edtxtEmail.addTextChangedListener(textWatcher)
 
-        //  SEND-ME-EMAIL BUTTON
         binding.btnSendEmail.setOnClickListener {
             if (isValidString(binding.edtxtEmail.text.toString())) {
                 startActivity(

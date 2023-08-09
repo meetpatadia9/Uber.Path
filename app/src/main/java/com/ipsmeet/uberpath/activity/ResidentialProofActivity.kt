@@ -34,4 +34,5 @@ class ResidentialProofActivity : AppCompatActivity() {
             adapter = VerificationMethodsAdapter(this@ResidentialProofActivity, methods)
         }
     }
+
 }

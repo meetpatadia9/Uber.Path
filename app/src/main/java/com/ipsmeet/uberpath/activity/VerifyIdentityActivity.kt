@@ -2,12 +2,8 @@ package com.ipsmeet.uberpath.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.ipsmeet.uberpath.R
@@ -29,7 +25,6 @@ class VerifyIdentityActivity : AppCompatActivity() {
         spannableString = ViewModelProvider(this)[SpannableStringViewModel::class.java]
 
         binding.txtDescription.text = spannableString.sendSecurityCode(this)
-
         binding.userEmail.text = intent.getStringExtra("email")
 
         isSelected()

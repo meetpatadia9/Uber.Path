@@ -1,8 +1,7 @@
 package com.ipsmeet.uberpath.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.SurfaceControl.Transaction
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R

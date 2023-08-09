@@ -20,4 +20,5 @@ class AuthenticationViewModel: ViewModel() {
         googleSignInClient = GoogleSignIn.getClient(context, googleSignInOption)
         return googleSignInClient
     }
+
 }

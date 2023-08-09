@@ -11,9 +11,10 @@ import com.ipsmeet.uberpath.databinding.RecyclerVerificationMethodBinding
 import com.ipsmeet.uberpath.dataclass.VerificationMethodDataClass
 
 class VerificationMethodsAdapter(val context: Context, private val methods: List<VerificationMethodDataClass>)
-    :RecyclerView.Adapter<VerificationMethodsAdapter.MethodsViewHolder>(){
+    : RecyclerView.Adapter<VerificationMethodsAdapter.MethodsViewHolder>(){
 
-    class MethodsViewHolder(val itemBinding: RecyclerVerificationMethodBinding): RecyclerView.ViewHolder(itemBinding.root)
+    class MethodsViewHolder(val itemBinding: RecyclerVerificationMethodBinding)
+        : RecyclerView.ViewHolder(itemBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MethodsViewHolder {
         val itemBinding = RecyclerVerificationMethodBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -25,17 +26,18 @@ class VerificationMethodsAdapter(val context: Context, private val methods: List
     }
 
     override fun onBindViewHolder(holder: MethodsViewHolder, position: Int) {
-        holder.apply {
+        holder.itemBinding.apply {
             with(methods[position]) {
-                Glide.with(context).load(this.icon).into(itemBinding.imgVMethod)
-                itemBinding.txtMethod.text = this.name
+                Glide.with(context).load(this.icon).into(imgVMethod)
+                txtMethod.text = this.name
             }
 
-            itemView.setOnClickListener {
+            root.setOnClickListener {
                 context.startActivity(
                     Intent(context, CreateCardActivity::class.java)
                 )
             }
         }
     }
+
 }

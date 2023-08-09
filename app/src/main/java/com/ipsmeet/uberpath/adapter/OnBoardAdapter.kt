@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ipsmeet.uberpath.R
 
-class OnBoardAdapter(private val context: Context) : RecyclerView.Adapter<OnBoardAdapter.OnBoardingViewHolder>() {
+class OnBoardAdapter(private val context: Context)
+    : RecyclerView.Adapter<OnBoardAdapter.OnBoardingViewHolder>() {
 
     private val layouts = arrayOf(R.layout.on_board_one, R.layout.on_board_two)
 
-    class OnBoardingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class OnBoardingViewHolder(itemView: View)
+        : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
         val view = LayoutInflater.from(context).inflate(layouts[viewType], parent, false)
@@ -26,7 +28,5 @@ class OnBoardAdapter(private val context: Context) : RecyclerView.Adapter<OnBoar
         return position
     }
 
-    override fun onBindViewHolder(holder: OnBoardingViewHolder, position: Int) {
-
-    }
+    override fun onBindViewHolder(holder: OnBoardingViewHolder, position: Int) { }
 }

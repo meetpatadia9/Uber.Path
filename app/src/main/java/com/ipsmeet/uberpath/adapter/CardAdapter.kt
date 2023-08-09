@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.RecyclerCardsBinding
 import com.ipsmeet.uberpath.dataclass.CardDataClass
 
@@ -25,10 +24,13 @@ class CardAdapter(val context: Context, private val cards: List<CardDataClass>)
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        holder.apply {
-            with (cards[position]) {
-                Glide.with(context).load(this.cards).into(itemBinding.imgVCards)
+        holder.itemBinding.apply {
+            with(cards[position]) {
+                Glide.with(context)
+                    .load(this.cards)
+                    .into(imgVCards)
             }
         }
     }
+
 }

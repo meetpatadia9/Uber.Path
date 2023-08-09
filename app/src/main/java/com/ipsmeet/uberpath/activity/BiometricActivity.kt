@@ -15,19 +15,16 @@ class BiometricActivity : AppCompatActivity() {
         binding = ActivityBiometricBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             startActivity(
                 Intent(this, HomeActivity::class.java)
             )
         }
 
-        //  ENABLE-BIOMETRIC BUTTON
         binding.btnEnableBiometric.setOnClickListener {
             Toast.makeText(this, "Your device does not support this. Buy new device", Toast.LENGTH_SHORT).show()
         }
 
-        //  DO-IT-LATER BUTTON
         binding.txtWillDoLater.setOnClickListener {
             startActivity(
                 Intent(this, HomeActivity::class.java)

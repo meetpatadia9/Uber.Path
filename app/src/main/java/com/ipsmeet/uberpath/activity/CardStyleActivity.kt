@@ -14,7 +14,6 @@ class CardStyleActivity : AppCompatActivity() {
         binding = ActivityCardStyleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }

@@ -15,7 +15,8 @@ class CountryAdapter(val context: Context, private val countryList: List<Country
 
     private var checked = 0
 
-    class CountryViewHolder(val itemBinding: RecyclerCountryBinding): RecyclerView.ViewHolder(itemBinding.root)
+    class CountryViewHolder(val itemBinding: RecyclerCountryBinding)
+        : RecyclerView.ViewHolder(itemBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val itemBinding = RecyclerCountryBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -28,23 +29,21 @@ class CountryAdapter(val context: Context, private val countryList: List<Country
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
-        holder.apply {
+        holder.itemBinding.apply {
             with(countryList[position]) {
-                itemBinding.imgVChecked.visibility = View.GONE
+                Glide.with(context).load(this.flag).into(imgVFlag)
+                txtCountryName.text = this.countryName
 
-                Glide.with(context).load(this.flag).into(itemBinding.imgVFlag)
-                itemBinding.txtCountryName.text = this.countryName
-
-                itemView.setOnClickListener {
+                root.setOnClickListener {
                     checked = position
                     notifyDataSetChanged()
                     listener.onCountrySelect(this)
                 }
 
                 if (checked == position) {
-                    itemBinding.imgVChecked.visibility = View.VISIBLE
+                    imgVChecked.visibility = View.VISIBLE
                 } else {
-                    itemBinding.imgVChecked.visibility = View.GONE
+                    imgVChecked.visibility = View.GONE
                 }
             }
         }
@@ -53,4 +52,5 @@ class CountryAdapter(val context: Context, private val countryList: List<Country
     interface OnItemClick {
         fun onCountrySelect(country: CountryDataclass)
     }
+
 }

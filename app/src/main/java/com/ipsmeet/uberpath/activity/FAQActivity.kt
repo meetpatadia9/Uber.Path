@@ -47,4 +47,5 @@ class FAQActivity : AppCompatActivity() {
             adapter = FaqAdapter(this@FAQActivity, faqs)
         }
     }
+
 }

@@ -19,8 +19,8 @@ class CardDetailsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityCardDetailsBinding
 
-    lateinit var sharedPreferences: SharedPreferences
-    lateinit var editor: Editor
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor: Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +47,10 @@ class CardDetailsActivity : AppCompatActivity() {
         editor.putString("cardStyle", cardStyle)
         editor.apply()
 
-        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
 
-        //  SAVE BUTTON
         binding.btnSave.setOnClickListener {
             readyDialog()
         }
@@ -84,7 +82,6 @@ class CardDetailsActivity : AppCompatActivity() {
             .setBottomRightCorner(CornerFamily.ROUNDED, radius)
             .build()
 
-        //  BUTTON
         dialogBinding.btnImReady.setOnClickListener {
             dialog.dismiss()
 

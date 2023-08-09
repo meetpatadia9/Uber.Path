@@ -5,13 +5,14 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.*
+import android.text.Editable
+import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -49,24 +50,19 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //  Initialize view-models
         authViewModel = ViewModelProvider(this)[AuthenticationViewModel::class.java]
         spannableString = ViewModelProvider(this)[SpannableStringViewModel::class.java]
 
-        //  Initialize google-authentication
         gsc = authViewModel.initializeGoogleAuth(this)
 
-        //  Initialize shared-preference
         sharedPreferences = getSharedPreferences("sharedPreference", MODE_PRIVATE)
 
-        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
 
         binding.edtxtEmail.addTextChangedListener(textWatcher)
 
-        //  FORGOT PASSWORD
         binding.txtForgotPassword.setOnClickListener {
             startActivity(
                 Intent(this, PasswordRecoveryActivity::class.java)
@@ -74,27 +70,11 @@ class SignInActivity : AppCompatActivity() {
             )
         }
 
-        //  SIGN-IN BUTTON
         binding.btnSignIn.setOnClickListener {
-            if (binding.edtxtEmail.text.toString().trim() == "") {
-                Toast.makeText(this, "Enter email.", Toast.LENGTH_SHORT).show()
-            }
-            /*if (binding.edtxtPassword.text.toString().trim() == "") {
-                Toast.makeText(this, "Enter password.", Toast.LENGTH_SHORT).show()
-            }*/
-            if (!isValidString(binding.edtxtEmail.text.toString())) {
-                Toast.makeText(this, "Invalid email. Enter proper email format!", Toast.LENGTH_SHORT).show()
-            }
-            /*else if (binding.edtxtPassword.text.toString().trim().length >= 8) {
-                Toast.makeText(this, "Password length must be greater than 8 characters.", Toast.LENGTH_SHORT).show()
-            }*/
-            else {
-                startActivity(
-                    Intent(this, OTPActivity::class.java)
-                        .putExtra("email", binding.edtxtEmail.text.toString().trim())
-                )
-                /*finish()*/
-            }
+            startActivity(
+                Intent(this, OTPActivity::class.java)
+                    .putExtra("email", binding.edtxtEmail.text.toString().trim())
+            )
         }
 
         //  GOOGLE SIGN-IN
@@ -131,21 +111,16 @@ class SignInActivity : AppCompatActivity() {
     private fun handleResult(task: Task<GoogleSignInAccount>) {
         if (task.isSuccessful) {
             val account: GoogleSignInAccount = task.result
-            if (account != null) {
-                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                //  Sign-in-with-credential
-                FirebaseAuth.getInstance().signInWithCredential(credential)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            updateUI()
-                        } else {
-                            Log.e("Auth FAIL", it.exception!!.message.toString())
-                        }
+            val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+            //  Sign-in-with-credential
+            FirebaseAuth.getInstance().signInWithCredential(credential)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        updateUI()
+                    } else {
+                        Log.e("Auth FAIL", it.exception!!.message.toString())
                     }
-            }
-            else {
-                Log.e("Task FAIL", "handleResult: ${ task.exception!!.message.toString() }")
-            }
+                }
         }
     }
 

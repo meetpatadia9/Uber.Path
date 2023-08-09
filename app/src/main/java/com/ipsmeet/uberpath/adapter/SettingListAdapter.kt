@@ -24,12 +24,12 @@ class SettingListAdapter(val context: Context, val list: List<ProfileListDataCla
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.apply {
-            with (list[position]) {
-                Glide.with(context).load(this.icon).into(itemBinding.imgVIcon)
-                itemBinding.txtName.text = this.text
+        holder.itemBinding.apply {
+            with(list[position]) {
+                Glide.with(context).load(this.icon).into(imgVIcon)
+                txtName.text = this.text
 
-                itemView.setOnClickListener {
+                root.setOnClickListener {
                     listener.onClickListener(this)
                 }
             }

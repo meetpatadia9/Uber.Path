@@ -19,7 +19,6 @@ class ReasonActivity : AppCompatActivity() {
         binding = ActivityReasonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
@@ -39,7 +38,6 @@ class ReasonActivity : AppCompatActivity() {
             adapter = ReasonAdapter(this@ReasonActivity, reasons)
         }
 
-        //  CONTINUE BUTTON
         binding.btnContinue.setOnClickListener {
             startActivity(
                 Intent(this, SetPINActivity::class.java)

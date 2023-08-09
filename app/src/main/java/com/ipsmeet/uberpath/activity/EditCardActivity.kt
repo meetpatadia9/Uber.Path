@@ -22,17 +22,18 @@ class EditCardActivity : AppCompatActivity() {
 
         when (intent.getStringExtra("cardStyle").toString()) {
             "cardOne" -> {
-                Glide.with(this).load(R.drawable.img_card_style1)
+                Glide.with(this)
+                    .load(R.drawable.img_card_style1)
                     .into(binding.imgVSelectedCardStyle)
             }
-
             "cardTwo" -> {
-                Glide.with(this).load(R.drawable.img_card_style2)
+                Glide.with(this)
+                    .load(R.drawable.img_card_style2)
                     .into(binding.imgVSelectedCardStyle)
             }
-
             "cardThree" -> {
-                Glide.with(this).load(R.drawable.img_card_style3)
+                Glide.with(this)
+                    .load(R.drawable.img_card_style3)
                     .into(binding.imgVSelectedCardStyle)
             }
         }

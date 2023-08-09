@@ -6,19 +6,12 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextPaint
 import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.text.style.ForegroundColorSpan
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -26,7 +19,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivitySignUpBinding
 import com.ipsmeet.uberpath.viewmodel.AuthenticationViewModel
 import com.ipsmeet.uberpath.viewmodel.SpannableStringViewModel
@@ -55,25 +47,20 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //  Initialize view-models
         authViewModel = ViewModelProvider(this)[AuthenticationViewModel::class.java]
         spannableString = ViewModelProvider(this)[SpannableStringViewModel::class.java]
 
-        //  Initialize google-authentication
         gsc = authViewModel.initializeGoogleAuth(this)
 
-        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
 
-        //  apply design to text-view
         binding.txtCreateAccount.text = spannableString.titleCreateAccount(this)
 
         binding.edtxtFullName.addTextChangedListener(textWatcher)
         binding.edtxtEmail.addTextChangedListener(textWatcher)
 
-        //  SIGN-UP BUTTON
         binding.btnSignUp.setOnClickListener {
             updateUI()
         }
@@ -88,7 +75,6 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this, "Not available for this device.", Toast.LENGTH_SHORT).show()
         }
 
-        //  Apply design to text-view
         binding.txtAlreadyAccount.apply {
             text = spannableString.alreadyHaveAccount(this@SignUpActivity)
             movementMethod = LinkMovementMethod.getInstance()   // handle clickable link
@@ -112,21 +98,16 @@ class SignUpActivity : AppCompatActivity() {
     private fun handleResult(task: Task<GoogleSignInAccount>) {
         if (task.isSuccessful) {
             val account: GoogleSignInAccount = task.result
-            if (account != null) {
-                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                //  Sign-in-with-credential
-                FirebaseAuth.getInstance().signInWithCredential(credential)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            updateUI()
-                        } else {
-                            Log.e("Auth FAIL", it.exception!!.message.toString())
-                        }
+            val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+            //  Sign-in-with-credential
+            FirebaseAuth.getInstance().signInWithCredential(credential)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        updateUI()
+                    } else {
+                        Log.e("Auth FAIL", it.exception!!.message.toString())
                     }
-            }
-            else {
-                Log.e("Task FAIL", "handleResult: ${ task.exception!!.message.toString() }")
-            }
+                }
         }
     }
 

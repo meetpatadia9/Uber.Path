@@ -38,7 +38,7 @@ class SelectLanguageActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@SelectLanguageActivity, LinearLayoutManager.VERTICAL, false)
             adapter = LanguageAdapter(this@SelectLanguageActivity, languageList,
                  object : LanguageAdapter.OnItemClick {
-                     override fun onCountrySelect(country: CountryDataclass) {
+                     override fun onLanguageSelect(country: CountryDataclass) {
 
                      }
                  })

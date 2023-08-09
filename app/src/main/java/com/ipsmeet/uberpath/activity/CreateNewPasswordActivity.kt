@@ -14,7 +14,6 @@ class CreateNewPasswordActivity : AppCompatActivity() {
         binding = ActivityCreateNewPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //  CREATE-PASSWORD BUTTON
         binding.btnCreatePassword.setOnClickListener {
             startActivity(
                 Intent(this, SignInActivity::class.java)
@@ -22,4 +21,5 @@ class CreateNewPasswordActivity : AppCompatActivity() {
             finish()
         }
     }
+
 }

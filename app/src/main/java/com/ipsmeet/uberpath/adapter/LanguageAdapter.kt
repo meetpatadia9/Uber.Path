@@ -3,7 +3,6 @@ package com.ipsmeet.uberpath.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -30,27 +29,31 @@ class LanguageAdapter(val context: Context, private val languageList: List<Count
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
-        holder.apply {
+        holder.itemBinding.apply {
             with(languageList[position]) {
-                Glide.with(context).load(this.flag).into(itemBinding.imgVFlag)
-                itemBinding.txtCountryName.text = this.countryName
+                Glide.with(context).load(this.flag).into(imgVFlag)
+                txtCountryName.text = this.countryName
 
-                itemView.setOnClickListener {
+                root.setOnClickListener {
                     checked = position
                     notifyDataSetChanged()
-                    listener.onCountrySelect(this)
+                    listener.onLanguageSelect(this)
                 }
 
                 if (checked == position) {
-                    Glide.with(context).load(R.drawable.img_circle_checked).into(itemBinding.imgVChecked)
+                    Glide.with(context)
+                        .load(R.drawable.img_circle_checked)
+                        .into(imgVChecked)
                 } else {
-                    Glide.with(context).load(R.drawable.img_circle_unchecked).into(itemBinding.imgVChecked)
+                    Glide.with(context)
+                        .load(R.drawable.img_circle_unchecked)
+                        .into(imgVChecked)
                 }
             }
         }
     }
 
     interface OnItemClick {
-        fun onCountrySelect(country: CountryDataclass)
+        fun onLanguageSelect(country: CountryDataclass)
     }
 }

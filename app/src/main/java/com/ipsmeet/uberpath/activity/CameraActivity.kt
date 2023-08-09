@@ -25,7 +25,6 @@ class CameraActivity : AppCompatActivity() {
 
         cameraPreview = ViewModelProvider(this)[CameraPreviewViewModel::class.java]
 
-        //  BACK BUTTON
         binding.btnBack.setOnClickListener {
             finish()
         }
@@ -34,7 +33,6 @@ class CameraActivity : AppCompatActivity() {
         binding.btnVerifyIdentity.setOnClickListener {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                 cameraPreview.openCamPreview(this, applicationContext, binding, binding.camPreview)
-//                cameraPreview.createCameraPreview(this)
             } else {
                 cameraPreview.checkCameraPermission(this)
             }

@@ -1,31 +1,28 @@
 package com.ipsmeet.uberpath.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
-import com.ipsmeet.uberpath.activity.AccountInfoActivity
-import com.ipsmeet.uberpath.activity.ContactsActivity
-import com.ipsmeet.uberpath.activity.FAQActivity
-import com.ipsmeet.uberpath.activity.GeneralSettingActivity
-import com.ipsmeet.uberpath.activity.ReferralCodeActivity
-import com.ipsmeet.uberpath.activity.SelectLanguageActivity
 import com.ipsmeet.uberpath.adapter.SettingListAdapter
 import com.ipsmeet.uberpath.databinding.FragmentProfileBinding
 import com.ipsmeet.uberpath.dataclass.ProfileListDataClass
+import com.ipsmeet.uberpath.viewmodel.ProfileSettingListViewModel
 
 class ProfileFragment : Fragment() {
 
     lateinit var binding: FragmentProfileBinding
+    lateinit var setting: ProfileSettingListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
+        setting = ViewModelProvider(requireActivity())[ProfileSettingListViewModel::class.java]
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -50,7 +47,7 @@ class ProfileFragment : Fragment() {
             adapter = SettingListAdapter(requireContext(), list1,
                 object : SettingListAdapter.OnClick {
                     override fun onClickListener(profile: ProfileListDataClass) {
-                        listOneOptions(profile)
+                        setting.listOneOptions(requireActivity(), profile)
                     }
                 })
         }
@@ -67,7 +64,7 @@ class ProfileFragment : Fragment() {
             adapter = SettingListAdapter(requireContext(), list2,
                 object : SettingListAdapter.OnClick {
                     override fun onClickListener(profile: ProfileListDataClass) {
-                        listTwoOptions(profile)
+                        setting.listTwoOptions(requireActivity(), profile)
                     }
                 })
         }
@@ -83,53 +80,9 @@ class ProfileFragment : Fragment() {
             adapter = SettingListAdapter(requireContext(), list3,
                 object : SettingListAdapter.OnClick {
                     override fun onClickListener(profile: ProfileListDataClass) {
-                        listThreeOptions(profile)
+                        setting.listThreeOptions(requireActivity(),     profile)
                     }
                 })
-        }
-    }
-
-    private fun listOneOptions(profile: ProfileListDataClass) {
-        when (profile.text) {
-            "Referral Code" -> {
-                requireContext().startActivity(
-                    Intent(requireContext(), ReferralCodeActivity::class.java)
-                )
-            }
-
-            "Contact List" -> {
-                requireContext().startActivity(
-                    Intent(requireContext(), ContactsActivity::class.java)
-                )
-            }
-
-            "Account Info" -> {
-                requireContext().startActivity(
-                    Intent(requireContext(), AccountInfoActivity::class.java)
-                )
-            }
-
-            "Language" -> {
-                requireContext().startActivity(
-                    Intent(requireContext(), SelectLanguageActivity::class.java)
-                )
-            }
-        }
-    }
-
-    private fun listTwoOptions(profile: ProfileListDataClass) {
-        if (profile.text == "General Setting") {
-            requireContext().startActivity(
-                Intent(requireContext(), GeneralSettingActivity::class.java)
-            )
-        }
-    }
-
-    private fun listThreeOptions(profile: ProfileListDataClass) {
-        if (profile.text == "FAQs") {
-            requireContext().startActivity(
-                Intent(requireContext(), FAQActivity::class.java)
-            )
         }
     }
 
