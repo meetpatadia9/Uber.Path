@@ -2,7 +2,6 @@ package com.ipsmeet.uberpath.viewmodel
 
 import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.pm.PackageManager
 import android.util.Log
 import android.view.View
@@ -37,6 +36,19 @@ class MapViewModel : ViewModel() {
                     "android.permission.ACCESS_FINE_LOCATION"
                 ), 1
             )
+            return
+        }
+    }
+
+    fun requestPermission(activity: Activity) {
+        if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+            && ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // system-default permission request permission dialog
+            ActivityCompat.requestPermissions(
+                activity, arrayOf(
+                    "android.permission.ACCESS_FINE_LOCATION",
+                    "android.permission.ACCESS_COARSE_LOCATION"
+                ), 1)
             return
         }
     }

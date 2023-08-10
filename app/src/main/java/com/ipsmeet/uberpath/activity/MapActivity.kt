@@ -8,6 +8,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -19,11 +20,13 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivityMapBinding
+import com.ipsmeet.uberpath.databinding.LayoutFindAtmSplashBinding
 import com.ipsmeet.uberpath.viewmodel.MapViewModel
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityMapBinding
+    private lateinit var splashBinding: LayoutFindAtmSplashBinding
 
     private lateinit var mapView: Fragment
     private lateinit var viewModel: MapViewModel
@@ -37,9 +40,22 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        window.apply {
-            statusBarColor = ContextCompat.getColor(this@MapActivity, R.color.blue)
-            WindowCompat.getInsetsController(window, decorView).isAppearanceLightStatusBars = false
+        viewModel = ViewModelProvider(this)[MapViewModel::class.java]
+
+        splashBinding = binding.includedFindAtmSplash
+        mapSplashActions()
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+            && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            handler.postDelayed(object : Runnable {
+                override fun run() {
+                    handler.postDelayed(this, 3000)
+                    showMapScreen()
+                }
+            }, 3000)
+        }
+        else {
+            viewModel.requestPermission(this)
         }
 
         binding.btnBack.setOnClickListener {
@@ -48,7 +64,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mapView = supportFragmentManager.findFragmentById(R.id.map)!!
 
-        viewModel = ViewModelProvider(this)[MapViewModel::class.java]
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -58,6 +73,16 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
             && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0F, locationListener)
+        }
+    }
+
+    private fun showMapScreen() {
+        binding.includedFindAtmSplash.mapSplash.visibility = View.GONE
+        binding.layoutMap.visibility = View.VISIBLE
+
+        window.apply {
+            statusBarColor = ContextCompat.getColor(this@MapActivity, R.color.blue)
+            WindowCompat.getInsetsController(window, decorView).isAppearanceLightStatusBars = false
         }
     }
 
@@ -92,6 +117,16 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
         override fun onProviderEnabled(provider: String) {}
         override fun onProviderDisabled(provider: String) {}
+    }
+
+    private fun mapSplashActions() {
+        splashBinding.btnBack.setOnClickListener {
+            finish()
+        }
+
+        splashBinding.txtCancel.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onResume() {
