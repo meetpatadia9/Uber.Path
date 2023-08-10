@@ -7,12 +7,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
+import com.ipsmeet.uberpath.activity.DetailHistoryTransactionActivity
 import com.ipsmeet.uberpath.activity.HistoryActivity
+import com.ipsmeet.uberpath.activity.HomeActivity
 import com.ipsmeet.uberpath.activity.NotificationActivity
 import com.ipsmeet.uberpath.activity.TopUpActivity
 import com.ipsmeet.uberpath.activity.TransferActivity
@@ -28,11 +32,12 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.green)
         sharedPreferences = requireContext().getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        (activity as HomeActivity).bottomNavigationBar.menu.findItem(R.id.menu_home).isChecked = true
+
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -70,6 +75,14 @@ class HomeFragment : Fragment() {
             )
         }
 
+        //  MORE
+        binding.layoutMore.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.layout_fragmentLoader, MoreFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
         //  HISTORY TRANSACTION
         binding.txtAllTransaction.setOnClickListener {
             requireContext().startActivity(
@@ -89,6 +102,14 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = TransactionAdapter(requireActivity(), transactionList)
             addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().window.apply {
+            statusBarColor = ContextCompat.getColor(requireContext(), R.color.green)
+            WindowCompat.getInsetsController(this, decorView).isAppearanceLightStatusBars = false
         }
     }
 

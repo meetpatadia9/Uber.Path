@@ -3,6 +3,7 @@ package com.ipsmeet.uberpath.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivityDetailHistoryTransactionBinding

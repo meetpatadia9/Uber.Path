@@ -3,6 +3,8 @@ package com.ipsmeet.uberpath.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivityHomeBinding
 import com.ipsmeet.uberpath.fragments.ActivityFragment
@@ -12,7 +14,8 @@ import com.ipsmeet.uberpath.fragments.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
 
-    lateinit var  binding: ActivityHomeBinding
+    lateinit var binding: ActivityHomeBinding
+    lateinit var bottomNavigationBar: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,46 +23,17 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.layout_fragmentLoader, HomeFragment())
-                .addToBackStack(null)
-                .commit()
+            replaceFragments(HomeFragment(), "HOME")
         }
 
-        binding.bottomNavigationBar.setOnItemSelectedListener {
-            when(it.itemId) {
-                R.id.menu_home -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.layout_fragmentLoader, HomeFragment())
-                        .addToBackStack(null)
-                        .commit()
-                    true
-                }
+        bottomNavigationBar = binding.bottomNavigationBar
 
-                R.id.menu_myCard -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.layout_fragmentLoader, MyCardFragment())
-                        .addToBackStack(null)
-                        .commit()
-                    true
-                }
-
-                R.id.menu_activity -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.layout_fragmentLoader, ActivityFragment())
-                        .addToBackStack(null)
-                        .commit()
-                    true
-                }
-
-                R.id.menu_profile -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.layout_fragmentLoader, ProfileFragment())
-                        .addToBackStack(null)
-                        .commit()
-                    true
-                }
-
+        bottomNavigationBar.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_home -> { replaceFragments(HomeFragment(), "HOME") }
+                R.id.menu_myCard -> { replaceFragments(MyCardFragment(), "MY-CARD") }
+                R.id.menu_activity -> { replaceFragments(ActivityFragment(), "ACTIVITY") }
+                R.id.menu_profile -> { replaceFragments(ProfileFragment(), "PROFILE") }
                 else -> { false }
             }
         }
@@ -68,6 +42,24 @@ class HomeActivity : AppCompatActivity() {
             startActivity(
                 Intent(this, QRScanActivity::class.java)
             )
+        }
+    }
+
+    private fun replaceFragments(fragment: Fragment, tag: String): Boolean {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.layout_fragmentLoader, fragment, tag)
+            .addToBackStack(null)
+            .commit()
+        return true
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+        } else {
+            finish()
         }
     }
 

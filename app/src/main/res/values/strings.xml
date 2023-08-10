@@ -119,6 +119,7 @@
     <string name="txt_susan">Susan Charles</string>
 
     <string name="web_client_id">1015268625751-pb3mdim3h5erisknip7u6fkc28559b0b.apps.googleusercontent.com</string>
+    <string name="map_api_key">AIzaSyBnze-wdUC7WYwvyT1qXT4LbulUUz59HQc</string>
 
     <string name="plus">+ %1$s</string>
     <string name="minus">- %1$s</string>
@@ -233,4 +234,8 @@
     <string name="txt_view_all">View All</string>
     <string name="txt_load_more">Load more</string>
     <string name="txt_notification">Notification</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="txt_find_location">Find Location</string>
+    <string name="txt_atm">To do this process please click now to find the location your nearest ATM</string>
+    <string name="txt_find_atm">Find ATM</string>
 </resources>

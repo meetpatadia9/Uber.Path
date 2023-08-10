@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
+import com.ipsmeet.uberpath.activity.HomeActivity
 import com.ipsmeet.uberpath.adapter.SettingListAdapter
 import com.ipsmeet.uberpath.databinding.FragmentProfileBinding
 import com.ipsmeet.uberpath.dataclass.ProfileListDataClass
@@ -21,11 +23,12 @@ class ProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
         setting = ViewModelProvider(requireActivity())[ProfileSettingListViewModel::class.java]
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        (activity as HomeActivity).bottomNavigationBar.menu.findItem(R.id.menu_profile).isChecked = true
+
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(LayoutInflater.from(context), container, false)
         return binding.root
@@ -33,6 +36,10 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnBack.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
 
         //  LIST-1
         val list1 = arrayListOf<ProfileListDataClass>()
@@ -80,9 +87,17 @@ class ProfileFragment : Fragment() {
             adapter = SettingListAdapter(requireContext(), list3,
                 object : SettingListAdapter.OnClick {
                     override fun onClickListener(profile: ProfileListDataClass) {
-                        setting.listThreeOptions(requireActivity(),     profile)
+                        setting.listThreeOptions(requireActivity(), profile)
                     }
                 })
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().window.apply {
+            statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
+            WindowCompat.getInsetsController(this, decorView).isAppearanceLightStatusBars = true
         }
     }
 

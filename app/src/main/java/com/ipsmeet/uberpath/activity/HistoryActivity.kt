@@ -3,6 +3,7 @@ package com.ipsmeet.uberpath.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.adapter.HistoryAdapter
@@ -19,7 +20,10 @@ class HistoryActivity : AppCompatActivity() {
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        window.statusBarColor = ContextCompat.getColor(this, R.color.green)
+        window.apply {
+            statusBarColor = ContextCompat.getColor(this@HistoryActivity, R.color.green)
+            WindowCompat.getInsetsController(window, decorView).isAppearanceLightStatusBars = false
+        }
 
         binding.btnBack.setOnClickListener {
             finish()

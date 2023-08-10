@@ -1,13 +1,15 @@
 package com.ipsmeet.uberpath.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
+import com.ipsmeet.uberpath.activity.HomeActivity
 import com.ipsmeet.uberpath.adapter.TransactionAdapter
 import com.ipsmeet.uberpath.databinding.FragmentActivityBinding
 import com.ipsmeet.uberpath.dataclass.TransactionDataClass
@@ -18,10 +20,12 @@ class ActivityFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        (activity as HomeActivity).bottomNavigationBar.menu.findItem(R.id.menu_activity).isChecked = true
+
         // Inflate the layout for this fragment
         binding = FragmentActivityBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -52,6 +56,14 @@ class ActivityFragment : Fragment() {
         binding.recyclerViewTransaction.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = TransactionAdapter(requireContext(), transactions)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().window.apply {
+            statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
+            WindowCompat.getInsetsController(this, decorView).isAppearanceLightStatusBars = true
         }
     }
 
