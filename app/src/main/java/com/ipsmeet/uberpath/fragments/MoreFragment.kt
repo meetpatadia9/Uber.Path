@@ -10,6 +10,7 @@ import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ipsmeet.uberpath.R
+import com.ipsmeet.uberpath.activity.ChatActivity
 import com.ipsmeet.uberpath.activity.MapActivity
 import com.ipsmeet.uberpath.adapter.SettingListAdapter
 import com.ipsmeet.uberpath.databinding.FragmentMoreBinding
@@ -40,6 +41,7 @@ class MoreFragment : Fragment() {
         val moreSettings = arrayListOf<ProfileListDataClass>()
         moreSettings.apply {
             add(ProfileListDataClass(R.drawable.img_bank, "Find ATM"))
+            add(ProfileListDataClass(R.drawable.img_robot, "Help"))
         }
 
         binding.recyclerViewMoreSetting.apply {
@@ -47,11 +49,7 @@ class MoreFragment : Fragment() {
             adapter = SettingListAdapter(requireContext(), moreSettings,
                 object : SettingListAdapter.OnClick {
                     override fun onClickListener(profile: ProfileListDataClass) {
-                        if (profile.text == "Find ATM") {
-                            startActivity(
-                                Intent(requireContext(), MapActivity::class.java)
-                            )
-                        }
+                        settingSelection(profile)
                     }
                 })
         }
@@ -62,6 +60,21 @@ class MoreFragment : Fragment() {
         requireActivity().window.apply {
             statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
             WindowCompat.getInsetsController(this, decorView).isAppearanceLightStatusBars = true
+        }
+    }
+
+    private fun settingSelection(setting: ProfileListDataClass) {
+        when (setting.text) {
+            "Find ATM" -> {
+                startActivity(
+                    Intent(requireContext(), MapActivity::class.java)
+                )
+            }
+            "Help" -> {
+                startActivity(
+                    Intent(requireContext(), ChatActivity::class.java)
+                )
+            }
         }
     }
 

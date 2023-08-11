@@ -55,7 +55,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             }, 3000)
         }
         else {
-            viewModel.requestPermission(this)
+            viewModel.checkPermission(this)
         }
 
         binding.btnBack.setOnClickListener {
@@ -63,7 +63,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         mapView = supportFragmentManager.findFragmentById(R.id.map)!!
-
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment

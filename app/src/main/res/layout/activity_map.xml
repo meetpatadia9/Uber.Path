@@ -36,7 +36,7 @@
                 app:tint="@color/white" />
 
             <TextView
-                android:id="@+id/txt_showQR"
+                android:id="@+id/txt_find_atm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_find_atm"

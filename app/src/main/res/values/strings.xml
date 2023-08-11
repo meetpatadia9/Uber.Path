@@ -238,4 +238,10 @@
     <string name="txt_find_location">Find Location</string>
     <string name="txt_atm">To do this process please click now to find the location your nearest ATM</string>
     <string name="txt_find_atm">Find ATM</string>
+    <string name="txt_coHelp">Co Help</string>
+    <string name="txt_type_here">Type here...</string>
+    <string name="cd_decor">Decor</string>
+    <string name="txt_bot_icon">Bot icon</string>
+    <string name="cd_attachments">Attachments</string>
+    <string name="cd_send">Send</string>
 </resources>
