@@ -19,9 +19,12 @@ class DetailHistoryTransactionActivity : AppCompatActivity() {
         binding = ActivityDetailHistoryTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+        window.apply {
+            statusBarColor = ContextCompat.getColor(this@DetailHistoryTransactionActivity, R.color.white)
+            WindowCompat.getInsetsController(window, decorView).isAppearanceLightStatusBars = true
+        }
 
-        binding.btnBack.apply {
+        binding.btnBack.setOnClickListener {
             finish()
         }
 
@@ -41,4 +44,5 @@ class DetailHistoryTransactionActivity : AppCompatActivity() {
             adapter = DetailedTransactionAdapter(this@DetailHistoryTransactionActivity, lineTransaction)
         }
     }
+
 }

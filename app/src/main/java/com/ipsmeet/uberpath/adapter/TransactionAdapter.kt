@@ -1,7 +1,9 @@
 package com.ipsmeet.uberpath.adapter
 
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -46,9 +48,15 @@ class TransactionAdapter(val context: Context, val list: List<TransactionDataCla
 
                 root.setOnClickListener {
                     if (this.name == "Line premium") {
-                        context.startActivity(
-                            Intent(context, DetailHistoryTransactionActivity::class.java)
-                        )
+                        try {
+                            context.startActivity(
+                                Intent().setComponent(
+                                    ComponentName(context, DetailHistoryTransactionActivity::class.java)
+                                )
+                            )
+                        } catch (e: Exception) {
+                            Log.e("Exception", e.message.toString())
+                        }
                     }
                     else {
                         Toast.makeText(context, "Only Line premium available at this moment\uD83D\uDE42", Toast.LENGTH_SHORT).show()

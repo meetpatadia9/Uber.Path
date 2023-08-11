@@ -1,16 +1,12 @@
 package com.ipsmeet.uberpath.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ipsmeet.uberpath.activity.DetailHistoryTransactionActivity
 import com.ipsmeet.uberpath.databinding.RecyclerHistoryBinding
 import com.ipsmeet.uberpath.dataclass.HistoryDataClass
-import com.ipsmeet.uberpath.dataclass.TransactionDataClass
 
 class HistoryAdapter(val context: Context, private val history: List<HistoryDataClass>)
     : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
