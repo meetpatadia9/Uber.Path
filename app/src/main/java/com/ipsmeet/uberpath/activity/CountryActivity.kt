@@ -10,6 +10,7 @@ import com.ipsmeet.uberpath.viewmodel.SelectCountryViewModel
 class CountryActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityCountryBinding
+
     private lateinit var selectCountry: SelectCountryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class CountryActivity : AppCompatActivity() {
         }
 
         binding.selectCountry.setOnClickListener {
-            selectCountry.showBottomSheet(this, binding)
+            selectCountry.selectCountry(this, binding)
         }
 
         binding.btnContinue.setOnClickListener {

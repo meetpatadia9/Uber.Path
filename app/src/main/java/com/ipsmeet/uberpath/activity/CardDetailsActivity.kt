@@ -8,17 +8,20 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.ActivityCardDetailsBinding
 import com.ipsmeet.uberpath.databinding.DialogCardIsReadyBinding
+import com.ipsmeet.uberpath.viewmodel.SelectCountryViewModel
 
 class CardDetailsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityCardDetailsBinding
 
+    private lateinit var selectCountryViewModel: SelectCountryViewModel
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var editor: Editor
 
@@ -27,6 +30,7 @@ class CardDetailsActivity : AppCompatActivity() {
         binding = ActivityCardDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        selectCountryViewModel = ViewModelProvider(this)[SelectCountryViewModel::class.java]
         val cardStyle = intent.getStringExtra("cardStyle").toString()
 
         when(cardStyle) {
@@ -41,14 +45,23 @@ class CardDetailsActivity : AppCompatActivity() {
             }
         }
 
-        sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("sharedPreference", MODE_PRIVATE)
         editor = sharedPreferences.edit()
 
         editor.putString("cardStyle", cardStyle)
         editor.apply()
 
+        Glide.with(this)
+            .load(sharedPreferences.getInt("countryFlag", R.drawable.flag_uk))
+            .into(binding.imgVFlag)
+        binding.txtCountryName.text = sharedPreferences.getString("userCountry", "United Kingdom")
+
         binding.btnBack.setOnClickListener {
             finish()
+        }
+
+        binding.selectCountry.setOnClickListener {
+            selectCountryViewModel.updatedCountry(this, binding)
         }
 
         binding.btnSave.setOnClickListener {
@@ -83,6 +96,8 @@ class CardDetailsActivity : AppCompatActivity() {
             .build()
 
         dialogBinding.btnImReady.setOnClickListener {
+            editor.putBoolean("isLogged", true)
+            editor.commit()
             dialog.dismiss()
 
             startActivity(

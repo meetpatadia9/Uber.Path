@@ -2,6 +2,7 @@ package com.ipsmeet.uberpath.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -28,6 +29,7 @@ class SignUpActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySignUpBinding
 
+    lateinit var sharedPreferences: SharedPreferences
     private val EMAIL_ADDRESS_PATTERN = Pattern.compile(
         "[a-zA-Z\\d+._%\\-]{1,256}" +            //  \\d == 0 to 9
                 "@" +
@@ -47,6 +49,7 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        sharedPreferences = getSharedPreferences("sharedPreference", MODE_PRIVATE)
         authViewModel = ViewModelProvider(this)[AuthenticationViewModel::class.java]
         spannableString = ViewModelProvider(this)[SpannableStringViewModel::class.java]
 
@@ -147,5 +150,13 @@ class SignUpActivity : AppCompatActivity() {
     //  CHECKING ENTERED EMAIL VALIDITY
     private fun isValidString(str: String): Boolean {
         return EMAIL_ADDRESS_PATTERN.matcher(str).matches()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val isLogged = sharedPreferences.getBoolean("isLogged", false)
+        if (isLogged || FirebaseAuth.getInstance().currentUser != null) {
+            updateUI()
+        }
     }
 }
