@@ -30,11 +30,25 @@ class HomeActivity : AppCompatActivity() {
 
         bottomNavigationBar.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_home -> { replaceFragments(HomeFragment(), "HOME") }
-                R.id.menu_myCard -> { replaceFragments(MyCardFragment(), "MY-CARD") }
-                R.id.menu_activity -> { replaceFragments(ActivityFragment(), "ACTIVITY") }
-                R.id.menu_profile -> { replaceFragments(ProfileFragment(), "PROFILE") }
-                else -> { false }
+                R.id.menu_home -> {
+                    replaceFragments(HomeFragment(), "HOME")
+                }
+
+                R.id.menu_myCard -> {
+                    replaceFragments(MyCardFragment(), "MY-CARD")
+                }
+
+                R.id.menu_activity -> {
+                    replaceFragments(ActivityFragment(), "ACTIVITY")
+                }
+
+                R.id.menu_profile -> {
+                    replaceFragments(ProfileFragment(), "PROFILE")
+                }
+
+                else -> {
+                    false
+                }
             }
         }
 
@@ -55,12 +69,9 @@ class HomeActivity : AppCompatActivity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        super.onBackPressed()
-        if (supportFragmentManager.backStackEntryCount > 0) {
-            supportFragmentManager.popBackStack()
-        } else {
+        onBackPressedDispatcher.onBackPressed()
+        if (supportFragmentManager.backStackEntryCount == 0)
             finish()
-        }
     }
 
 }

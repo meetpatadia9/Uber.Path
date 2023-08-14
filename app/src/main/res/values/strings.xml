@@ -244,4 +244,5 @@
     <string name="txt_bot_icon">Bot icon</string>
     <string name="cd_attachments">Attachments</string>
     <string name="cd_send">Send</string>
+    <string name="cd_details_transaction_chart">Details transaction chart</string>
 </resources>
