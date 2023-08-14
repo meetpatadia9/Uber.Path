@@ -25,12 +25,12 @@ class ReasonActivity : AppCompatActivity() {
 
         val reasons = arrayListOf<ReasonDataclass>()
         reasons.apply {
-            add(ReasonDataclass(R.drawable.img_spend_or_save, "Spend or \nsave daily"))
-            add(ReasonDataclass(R.drawable.img_fast, "Fast my\ntransactions"))
-            add(ReasonDataclass(R.drawable.img_friend, "Payments\nto friends"))
-            add(ReasonDataclass(R.drawable.img_credit_card, "Online\npayments"))
-            add(ReasonDataclass(R.drawable.img_travel, "Spend while\ntravelling"))
-            add(ReasonDataclass(R.drawable.img_business_plan, "Your financial\nassets"))
+            add(ReasonDataclass(R.drawable.img_spend_or_save, "Spend or \nsave daily", false))
+            add(ReasonDataclass(R.drawable.img_fast, "Fast my\ntransactions", false))
+            add(ReasonDataclass(R.drawable.img_friend, "Payments\nto friends", false))
+            add(ReasonDataclass(R.drawable.img_credit_card, "Online\npayments", false))
+            add(ReasonDataclass(R.drawable.img_travel, "Spend while\ntravelling", false))
+            add(ReasonDataclass(R.drawable.img_business_plan, "Your financial\nassets", false))
         }
 
         binding.recyclerViewReasons.apply {
