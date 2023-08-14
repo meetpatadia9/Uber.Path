@@ -1,18 +1,10 @@
 package com.ipsmeet.uberpath.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.ipsmeet.uberpath.R
-import com.ipsmeet.uberpath.adapter.CountryAdapter
 import com.ipsmeet.uberpath.databinding.ActivityCountryBinding
-import com.ipsmeet.uberpath.databinding.LayoutBottomsheetCountryBinding
-import com.ipsmeet.uberpath.dataclass.CountryDataclass
 import com.ipsmeet.uberpath.viewmodel.SelectCountryViewModel
 
 class CountryActivity : AppCompatActivity() {

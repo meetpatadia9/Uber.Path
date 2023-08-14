@@ -9,11 +9,10 @@ import com.bumptech.glide.Glide
 import com.ipsmeet.uberpath.R
 import com.ipsmeet.uberpath.databinding.RecyclerLanguageBinding
 import com.ipsmeet.uberpath.dataclass.CountryDataclass
+import com.ipsmeet.uberpath.viewmodel.SuperGlobal
 
 class LanguageAdapter(val context: Context, private val languageList: List<CountryDataclass>, private val listener: OnItemClick)
     : RecyclerView.Adapter<LanguageAdapter.CountryViewHolder>(){
-
-    private var checked = 0
 
     class CountryViewHolder(val itemBinding: RecyclerLanguageBinding)
         : RecyclerView.ViewHolder(itemBinding.root)
@@ -35,12 +34,12 @@ class LanguageAdapter(val context: Context, private val languageList: List<Count
                 txtCountryName.text = this.countryName
 
                 root.setOnClickListener {
-                    checked = position
+                    SuperGlobal.selectedLanguage = position
                     notifyDataSetChanged()
                     listener.onLanguageSelect(this)
                 }
 
-                if (checked == position) {
+                if (SuperGlobal.selectedLanguage == position) {
                     Glide.with(context)
                         .load(R.drawable.img_circle_checked)
                         .into(imgVChecked)

@@ -9,11 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ipsmeet.uberpath.databinding.RecyclerCountryBinding
 import com.ipsmeet.uberpath.dataclass.CountryDataclass
+import com.ipsmeet.uberpath.viewmodel.SuperGlobal
 
 class CountryAdapter(val context: Context, private val countryList: List<CountryDataclass>, private val listener: OnItemClick)
     : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>(){
-
-    private var checked = 0
 
     class CountryViewHolder(val itemBinding: RecyclerCountryBinding)
         : RecyclerView.ViewHolder(itemBinding.root)
@@ -35,12 +34,13 @@ class CountryAdapter(val context: Context, private val countryList: List<Country
                 txtCountryName.text = this.countryName
 
                 root.setOnClickListener {
-                    checked = position
+                    SuperGlobal.selectedCountry = position
+                    this.isSelected = true
                     notifyDataSetChanged()
                     listener.onCountrySelect(this)
                 }
 
-                if (checked == position) {
+                if (SuperGlobal.selectedCountry == position) {
                     imgVChecked.visibility = View.VISIBLE
                 } else {
                     imgVChecked.visibility = View.GONE

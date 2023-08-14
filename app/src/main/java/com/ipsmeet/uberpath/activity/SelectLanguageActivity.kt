@@ -23,15 +23,15 @@ class SelectLanguageActivity : AppCompatActivity() {
 
         val languageList = arrayListOf<CountryDataclass>()
         languageList.apply {
-            add(CountryDataclass(R.drawable.flag_usa, "English (US)"))
-            add(CountryDataclass(R.drawable.flag_uk, "English (ENG)"))
-            add(CountryDataclass(R.drawable.flag_indonesia, "Indonesian"))
-            add(CountryDataclass(R.drawable.flag_russia, "Russia"))
-            add(CountryDataclass(R.drawable.flag_french, "French"))
-            add(CountryDataclass(R.drawable.flag_china, "Chinese"))
-            add(CountryDataclass(R.drawable.flag_japan, "Japanese"))
-            add(CountryDataclass(R.drawable.flag_germany, "Germany"))
-            add(CountryDataclass(R.drawable.flag_netherlands, "Netherlands"))
+            add(CountryDataclass(R.drawable.flag_usa, "English (US)", false))
+            add(CountryDataclass(R.drawable.flag_uk, "English (ENG)", false))
+            add(CountryDataclass(R.drawable.flag_indonesia, "Indonesian", false))
+            add(CountryDataclass(R.drawable.flag_russia, "Russia", false))
+            add(CountryDataclass(R.drawable.flag_french, "French", false))
+            add(CountryDataclass(R.drawable.flag_china, "Chinese", false))
+            add(CountryDataclass(R.drawable.flag_japan, "Japanese", false))
+            add(CountryDataclass(R.drawable.flag_germany, "Germany", false))
+            add(CountryDataclass(R.drawable.flag_netherlands, "Netherlands", false))
         }
 
         binding.recyclerViewLanguage.apply {

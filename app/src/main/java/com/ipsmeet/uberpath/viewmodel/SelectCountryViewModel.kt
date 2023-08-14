@@ -1,6 +1,7 @@
 package com.ipsmeet.uberpath.viewmodel
 
 import android.content.Context
+import android.os.Handler
 import android.view.LayoutInflater
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,12 +28,12 @@ class SelectCountryViewModel: ViewModel() {
 
         val countryList = arrayListOf<CountryDataclass>()
         countryList.apply {
-            add(CountryDataclass(R.drawable.flag_uk, "United Kingdom"))
-            add(CountryDataclass(R.drawable.flag_singapore, "Singapore"))
-            add(CountryDataclass(R.drawable.flag_usa, "United States"))
-            add(CountryDataclass(R.drawable.flag_china, "China"))
-            add(CountryDataclass(R.drawable.flag_netherlands, "Netherlands"))
-            add(CountryDataclass(R.drawable.flag_indonesia, "Indonesia"))
+            add(CountryDataclass(R.drawable.flag_uk, "United Kingdom", false))
+            add(CountryDataclass(R.drawable.flag_singapore, "Singapore", false))
+            add(CountryDataclass(R.drawable.flag_usa, "United States", false))
+            add(CountryDataclass(R.drawable.flag_china, "China", false))
+            add(CountryDataclass(R.drawable.flag_netherlands, "Netherlands", false))
+            add(CountryDataclass(R.drawable.flag_indonesia, "Indonesia", false))
         }
 
         bottomSheetBinding.recyclerViewCountries.apply {
@@ -42,7 +43,14 @@ class SelectCountryViewModel: ViewModel() {
                     override fun onCountrySelect(country: CountryDataclass) {
                         Glide.with(context).load(country.flag).into(binding.imgVFlag)
                         binding.txtCountryName.text = country.countryName
-                        bottomSheet.dismiss()
+
+                        val handler = Handler()
+                        handler.postDelayed(object : Runnable {
+                            override fun run() {
+                                handler.postDelayed(this, 200)
+                                bottomSheet.dismiss()
+                            }
+                        }, 200)
                     }
                 })
         }
